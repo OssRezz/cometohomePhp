@@ -1,0 +1,23 @@
+
+
+body{
+    background-color: #fff;
+}
+.bgcc{
+    background-color: #238340;
+}
+p{
+    font-size: 14px;
+}
+.card-image-width{
+    width: 16rem;
+}
+.btn-w{
+    width: 100px;
+}
+.form-width{
+    width: 32rem;
+}
+.lp{
+    padding: 1px 13px 1px 16px;
+}

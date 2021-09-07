@@ -53,7 +53,7 @@ class Matriculas extends Conexion
     public function listarClases()
     {
         $listarClases = null;
-        $statement = $this->db->prepare("SELECT * FROM tbl_clases");
+        $statement = $this->db->prepare("SELECT * FROM tbl_clases WHERE estado = 1");
         $statement->execute();
         while ($consulta = $statement->fetch()) {
             $listarClases[] = $consulta;

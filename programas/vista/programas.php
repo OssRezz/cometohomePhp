@@ -4,6 +4,7 @@ require '../../sedes/Modelo/ModeloSedes.php';
 
 $programas = new Programas();
 $sedes =  new Sedes();
+$date = date('Y-m-d');
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ $sedes =  new Sedes();
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 15; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
             </div>
 
@@ -67,8 +68,8 @@ $sedes =  new Sedes();
 
                         <div class="form-row">
                             <div class="col">
-                                <label for="selectEscuela">Escuela</label>
-                                <select name="selectEscuela" class="form-control" id="selectEscuela">
+                                <label for="selectescuela">Escuela</label>
+                                <select name="selectescuela" class="form-control" id="selectescuela">
                                     <?php
                                     $Escuelas = $programas->listarEscuela();
                                     if ($Escuelas != null) {
@@ -97,7 +98,7 @@ $sedes =  new Sedes();
                         <div class="form-row my-3">
                             <div class="col">
                                 <label for="selectSede">Sede</label>
-                                <select name="selectSede" class="form-control" id="selectSede">
+                                <select name="selectSede" class="form-control" id="selectsede">
                                     <?php
                                     $Sedes = $sedes->listarSedes();
                                     if ($Sedes != null) {
@@ -125,11 +126,11 @@ $sedes =  new Sedes();
                         <div class="form-row mb-4">
                             <div class="col">
                                 <label for="f-inicio">Fecha de inicio</label>
-                                <input type="date" name="f-inicio" id="fechainicio" placeholder="Ingresar f-inicio" class="form-control">
+                                <input type="date" name="f-inicio" id="fechainicio" value="<?php echo $date ?>" class="form-control">
                             </div>
                             <div class="col">
                                 <label for="f-final">Fecha final</label>
-                                <input type="date" name="f-final" id="fechafinal" placeholder="Ingresar f-final" class="form-control">
+                                <input type="date" name="f-final" id="fechafinal" value="<?php echo $date ?>" class="form-control">
                             </div>
                         </div>
 
@@ -181,8 +182,7 @@ $sedes =  new Sedes();
                                             <li class="list-group-item lp d-flex justify-content-between">
                                                 <div class=""><b>Escuela </b>: <?php echo $Programas['escuela'] ?></div>
                                                 <div class="text-center">
-                                                    <button class="btn btn-sm btn-outline-primary border-0" id="btn-editar-usuario" value="<?php echo $Programas['id_programa'] ?>">Editar</button>
-                                                    <button class="btn btn-sm btn-outline-danger  border-0" id="btn-eliminar-usuario" value="<?php echo $Programas['id_programa'] ?>"><i class="far fa-trash-alt" style="pointer-events: none;"></i></button>
+                                                    <button class="btn btn-sm btn-outline-primary border-0" id="btn-editar-programa" value="<?php echo $Programas['id_programa'] ?>">Editar</button>
                                                 </div>
                                             </li>
                                             <li class="list-group-item lp"><b>Edad requerida </b>: <?php echo $Programas['edad'] ?></li>

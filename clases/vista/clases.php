@@ -1,3 +1,9 @@
+<?php
+require '../Modelo/ModeloClases.php';
+
+$clases = new Clases();
+$date = date('Y-m-d');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -22,6 +28,10 @@
     <div class="container-fluid">
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
+            <div id="respuesta">
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
+            </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
                 <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
@@ -53,12 +63,6 @@
                 </div>
 
                 <div class="card-body">
-
-                    <div class="form-group">
-                        <label for="selectPrograma">Programas</label>
-                        <div id="selectPrograma"></div>
-                    </div>
-
                     <div class="form-group">
                         <label for="grupo">Grupo</label>
                         <input type="text" name="grupo" id="grupo" placeholder="Ingresar grupo" class="form-control">
@@ -66,12 +70,12 @@
 
                     <div class="form-row mb-4">
                         <div class="col-6">
-                            <label for="f-inicio">Fecha de inicio</label>
-                            <input type="date" name="fechaIni" id="fechaIni" placeholder="Ingresar f-inicio" class="form-control">
+                            <label for="fechaIni">Fecha de inicio</label>
+                            <input type="date" name="fechaIni" id="fechaIni" value="<?php echo  $date ?>" class="form-control">
                         </div>
                         <div class="col-6">
-                            <label for="f-final">Fecha final</label>
-                            <input type="date" name="fechaFin" id="fechaFin" placeholder="Ingresar f-final" class="form-control">
+                            <label for="fechaFin">Fecha final</label>
+                            <input type="date" name="fechaFin" id="fechaFin" value="<?php echo  $date ?>" class="form-control">
                         </div>
                     </div>
 
@@ -81,7 +85,7 @@
                             <input type="number" name="cantClases" id="cantClases" placeholder="Ingresar cant-clases" class="form-control">
                         </div>
                         <div class="col">
-                            <label for="selectEstado">estado</label>
+                            <label for="selectEstado">Estado</label>
                             <select name="selectEstado" id="selectEstado" class="form-control">
                                 <option value="1" selected>Activo</option>
                                 <option value="0">Inactivo</option>
@@ -95,12 +99,49 @@
                             <button id="btn-ingresar-clase" type="button" class="btn btn-outline-success btn-block rounded-0">Registrar usuario</button>
                         </div>
                     </div>
-                    <div id="respuesta"></div>
                 </div>
             </div>
 
             <div class="card rounded-0 border-0">
-                <div id="tablaDeClases"></div>
+                <table class='table table-hover table-sm table-responsive border'>
+                    <tr>
+                        <th>Grupo</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha fin</th>
+                        <th>N° de clases</th>
+                        <th>Estado</th>
+                        <th>opciones</th>
+                    </tr>
+                    <tr>
+                        <?php
+                        $paginationStart = ($pagina - 1) * $limit;
+                        $Clases = $clases->listarClasesPagination($paginationStart, $limit);
+
+                        if ($Clases != null) {
+                            foreach ($Clases as $Clases) {
+                        ?>
+                                <td><?php echo $Clases['grupo'] ?></td>
+                                <td><?php echo $Clases['fechainicio'] ?></td>
+                                <td><?php echo $Clases['fechafin'] ?></td>
+                                <td><?php echo $Clases['numeroclases'] ?></td>
+                                <td>
+                                    <?php
+                                    if ($Clases['estado']  != 1) { ?>
+                                        <div class='text-danger'><b>Inactivo</b></div>
+                                    <?php } else { ?>
+                                        <div class='text-success'><b>Activo</b></div>
+                                    <?php } ?>
+                                </td>
+
+                                <td>
+                                    <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo $Clases['id_clase'] ?>' id='btn-editar-clase'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                </td>
+                    </tr>
+            <?php }
+                        } ?>
+                </table>
+                <!-- Pagination -->
+                <div class="col d-flex justify-content-center" id="paginacion"></div>
             </div>
 
         </div>

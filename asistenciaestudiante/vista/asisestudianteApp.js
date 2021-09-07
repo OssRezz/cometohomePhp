@@ -1,11 +1,13 @@
 $(document).ready(function () {
 
-    $.post('ListarAsisestudianteServlet', {}, function (responseText) {
-        $('#tablaDeAsisEstudiante').html(responseText);
-    });
-
-    $.post('SelectClasesServlet', {}, function (responseText) {
-        $('#selectClase').html(responseText);
+    //Carga la paginación de la vista de sedes
+    const limit = $("#limit").val();
+    const pagina = $("#pagina").val();
+    $.post('../control/ctrlPaginacion.php', {
+        limit: limit,
+        pagina: pagina
+    }, function (responseText) {
+        $('#paginacion').html(responseText);
     });
 
     //ingresar una sede
@@ -15,7 +17,7 @@ $(document).ready(function () {
         const selectClases = $('#selectClases').val();
         const fechaClase = $('#fechaClase').val();
         const selectAsistencia = $('#selectAsistencia').val();
-        $.post('InsertarAsisestudianteServlet', {
+        $.post('../control/ctrlInsertarAsisestudiante.php', {
             cedula: cedula,
             selectClases: selectClases,
             fechaClase: fechaClase,

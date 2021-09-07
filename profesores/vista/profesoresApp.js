@@ -1,8 +1,13 @@
 $(document).ready(function () {
 
-
-    $.post('ListarProfesoresServlet', {}, function (responseText) {
-        $('#tablaDeProfesores').html(responseText);
+    //Carga la paginación de la vista de sedes
+    const limit = $("#limit").val();
+    const pagina = $("#pagina").val();
+    $.post('../control/ctrlPaginacion.php', {
+        limit: limit,
+        pagina: pagina
+    }, function (responseText) {
+        $('#paginacion').html(responseText);
     });
 
 
@@ -15,7 +20,7 @@ $(document).ready(function () {
         const telefono = $('#telefono').val();
         const email = $('#email').val();
         const titulo = $('#titulo').val();
-        $.post('InsertarProfesoresServlet', {
+        $.post('../control/ctrlIngresarProfesores.php', {
             cedula: cedula,
             nombre: nombre,
             apellido: apellido,
@@ -27,32 +32,31 @@ $(document).ready(function () {
         });
     });
 
-    //Responde con la modal de editar profesores
+
     $(document).click(function (e) {
-        const accion = e.target.id;
-        if (accion === "btn-editar-profesor") {
-            const cedula = e.target.value;
-            $.post('EditarProfesoresServlet', {
-                cedula: cedula
+        let cc_profesor;
+        //Responde con la modal de editar profesores
+        if (e.target.id === "btn-editar-profesor") {
+
+            cc_profesor = e.target.value;
+            $.post('../control/ctrlModalEditarProfesor.php', {
+                cc_profesor: cc_profesor
             }, function (responseText) {
                 $('#respuesta').html(responseText);
             });
-        }
-    });
 
-    //Post actualizar profesor
-    $(document).click(function (e) {
-        const accion = e.target.id;
-        if (accion === "btn-actualizar-profesor") {
-            const id_profesor = $('#id_profesor').val();
-            const cc_profesor = $('#cc_profesor').val();
+        } else if (e.target.id === "btn-actualizar-profesor") {
+
+            //Post actualizar profesor
+            cc_profesor = $('#cc_profesor').val();
+            const identificacion = $('#identificacion').val();
             const nombreProfesor = $('#nombreProfesor').val();
             const emailProfesor = $('#emailProfesor').val();
             const telefonoProfesor = $('#telefonoProfesor').val();
             const tituloProfesor = $('#tituloProfesor').val();
-            $.post('ActualizarProfesorServlet', {
-                id_profesor: id_profesor,
+            $.post('../control/ctrlActualizarProfesor.php', {
                 cc_profesor: cc_profesor,
+                identificacion: identificacion,
                 nombreProfesor: nombreProfesor,
                 emailProfesor: emailProfesor,
                 telefonoProfesor: telefonoProfesor,
@@ -60,9 +64,10 @@ $(document).ready(function () {
             }, function (responseText) {
                 $('#respuesta').html(responseText);
             });
-        }
-    });
 
+        }
+
+    });
 
 
 });

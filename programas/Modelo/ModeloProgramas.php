@@ -73,4 +73,48 @@ class Programas extends Conexion
         }
         return $listarProgramasPorEscuela;
     }
+
+    public function insertarPrograma($id_escuela, $nombre, $edad, $id_sede, $cupos, $costo, $fechainicio, $fechafin, $horario, $estado)
+    {
+        $statement = $this->db->prepare("INSERT INTO `tbl_programas`(`id_escuela`, `nombre`,
+         `edad`, `id_sede`, `cupos`, `costo`, `fechainicio`, `fechafin`, `horario`, `estado`)
+          VALUES (:id_escuela,:nombre,:edad,:id_sede,:cupos,:costo,:fechainicio,:fechafin,:horario,:estado)");
+        $statement->bindParam(':id_escuela', $id_escuela);
+        $statement->bindParam(':nombre', $nombre);
+        $statement->bindParam(':edad', $edad);
+        $statement->bindParam(':id_sede', $id_sede);
+        $statement->bindParam(':cupos', $cupos);
+        $statement->bindParam(':costo', $costo);
+        $statement->bindParam(':fechainicio', $fechainicio);
+        $statement->bindParam(':fechafin', $fechafin);
+        $statement->bindParam(':horario', $horario);
+        $statement->bindParam(':estado', $estado);
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function actualizarPrograma($id_programa,$id_escuela, $nombre, $edad, $id_sede, $cupos, $costo, $fechainicio, $fechafin, $horario, $estado)
+    {
+        $statement = $this->db->prepare("UPDATE `tbl_programas` SET `id_escuela`=:id_escuela,
+        `nombre`=:nombre,`edad`=:edad,`id_sede`=:id_sede,`cupos`=:cupos,`costo`=:costo,`fechainicio`=:fechainicio,`fechafin`=:fechafin,`horario`=:horario,`estado`=:estado WHERE id_programa=:id_programa");
+        $statement->bindParam(':id_programa', $id_programa);
+        $statement->bindParam(':id_escuela', $id_escuela);
+        $statement->bindParam(':nombre', $nombre);
+        $statement->bindParam(':edad', $edad);
+        $statement->bindParam(':id_sede', $id_sede);
+        $statement->bindParam(':cupos', $cupos);
+        $statement->bindParam(':costo', $costo);
+        $statement->bindParam(':fechainicio', $fechainicio);
+        $statement->bindParam(':fechafin', $fechafin);
+        $statement->bindParam(':horario', $horario);
+        $statement->bindParam(':estado', $estado);
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

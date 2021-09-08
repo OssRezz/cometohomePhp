@@ -57,7 +57,7 @@ $date = date('Y-m-d');
         <!---->
         <div class="row d-flex justify-content-center align-items-start py-3">
 
-            <div class="card mx-3 rounded-0 mb-4">
+            <div class="card mx-3 rounded-0 mb-4"   style="width: 23rem;">
                 <div class="card-header">
                     <h5><i class="fas fa-plus"></i> Registrar programas</h5>
                 </div>
@@ -89,10 +89,7 @@ $date = date('Y-m-d');
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre" id="nombre" placeholder="Ingresar nombre" class="form-control">
                             </div>
-                            <div class="col">
-                                <label for="edad">Limite de edad</label>
-                                <input type="text" name="edad" id="edad" placeholder="Ingresar edad" class="form-control">
-                            </div>
+                            
                         </div>
 
                         <div class="form-row my-3">
@@ -113,7 +110,7 @@ $date = date('Y-m-d');
                             </div>
                         </div>
 
-                        <div class="form-row mb-4">
+                        <div class="form-row mb-4">                            
                             <div class="col">
                                 <label for="cupos">Cupos</label>
                                 <input type="number" name="cupos" id="cupos" placeholder="Ingresar cupos" class="form-control">
@@ -123,16 +120,24 @@ $date = date('Y-m-d');
                                 <input type="number" name="costo" id="costo" placeholder="Ingresar costo" class="form-control">
                             </div>
                         </div>
+
                         <div class="form-row mb-4">
                             <div class="col">
-                                <label for="f-inicio">Fecha de inicio</label>
-                                <input type="date" name="f-inicio" id="fechainicio" value="<?php echo $date ?>" class="form-control">
-                            </div>
-                            <div class="col">
-                                <label for="f-final">Fecha final</label>
-                                <input type="date" name="f-final" id="fechafinal" value="<?php echo $date ?>" class="form-control">
-                            </div>
+                                <label for="edad">Limite de edad</label>
+                                <input type="text" name="edad" id="edad" placeholder="Ingresar edad" class="form-control">
+                            </div>                            
                         </div>
+
+                        <div class="form-row mb-4">  
+                                <div class="col-6">
+                                <label for="f-inicio">Fecha de inicio</label>
+                                <input type="date" name="f-inicio" id="fechainicio" value="<?php echo $date ?>" class="form-control"  style="font-size: 14px">
+                            </div>
+                            <div class="col-6">
+                                <label for="f-final">Fecha final</label>
+                                <input type="date" name="f-final" id="fechafinal" value="<?php echo $date ?>" class="form-control"  style="font-size: 14px">
+                            </div>
+                        </div>  
 
                         <div class="form-row mb-4">
                             <div class="col-8">
@@ -159,9 +164,12 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card border-0 rounded-0 p-0 m-0">
+            <div class="card border-0 rounded-0 p-0 m-0 mx-4"style="width: 26rem;">
                 <table class="table border table-hover">
                     <!--Trabajador-->
+
+                    <h5><i class="fas fa-list"></i> Programas</h5><hr class="p-0 m-0">
+
                     <tr class="">
                         <div id="accordion">
                             <?php
@@ -172,17 +180,15 @@ $date = date('Y-m-d');
                                 foreach ($Programas as $Programas) {
                             ?>
                                     <!--collapseExampleOne es el id -->
-                                    <div class="">
-                                        <button class="btn btn-block  border bg-light rounded-0 d-flex justify-content-start py-2 shadow-none px-2 text-dark" data-toggle="collapse" data-target="#collapse<?php echo $Programas['id_programa'] ?>" aria-expanded="true" aria-controls="collapse<?php echo $Programas['id_programa'] ?>">
-                                            <i class='text-muted'></i><?php echo $Programas['nombre'] ?></p>
+                                        <button class="btn btn-block  border bg-light rounded-0 d-flex justify-content-start py-1 shadow-none px-2 text-dark" data-toggle="collapse" data-target="#collapse<?php echo $Programas['id_programa'] ?>" aria-expanded="true" aria-controls="collapse<?php echo $Programas['id_programa'] ?>"  >
+                                            <span class="text-left"><?php echo $Programas['nombre'] ?></span>
                                         </button>
-                                    </div>
                                     <div class="collapse border border-top-0 " id="collapse<?php echo $Programas['id_programa'] ?>" data-parent="#accordion">
-                                        <ul class="list-group list-group-flush">
+                                        <ul class="list-group list-group-flush text-muted">
                                             <li class="list-group-item lp d-flex justify-content-between">
                                                 <div class=""><b>Escuela </b>: <?php echo $Programas['escuela'] ?></div>
                                                 <div class="text-center">
-                                                    <button class="btn btn-sm btn-outline-primary border-0" id="btn-editar-programa" value="<?php echo $Programas['id_programa'] ?>">Editar</button>
+                                                    <button class="btn btn-sm btn-outline-primary border-0" id="btn-editar-programa" value="<?php echo $Programas['id_programa'] ?>"><i class='fas fa-edit' style='pointer-events: none;'></i></button>
                                                 </div>
                                             </li>
                                             <li class="list-group-item lp"><b>Edad requerida </b>: <?php echo $Programas['edad'] ?></li>
@@ -193,9 +199,9 @@ $date = date('Y-m-d');
                                             <li class="list-group-item lp"><b>Fecha de finalización </b>: <?php echo $Programas['fechafin'] ?></li>
                                             <?php
                                             if ($Programas['estado'] != 1) { ?>
-                                                <li class='list-group-item lp text-danger'><b>Inactivo</b></li>
+                                                <li class='list-group-item lp'><span class="text-white bg-danger px-2 rounded-pill " style="font-size: 14px;">Inactivo</span></li>
                                             <?php } else { ?>
-                                                <li class='list-group-item lp text-success'><b>Activo</b></li>
+                                                <li class='list-group-item lp text-success'><span class="text-white bg-success px-2 rounded-pill " style="font-size: 14px;">Activo</span></li>
                                             <?php } ?>
                                         </ul>
                                     </div>

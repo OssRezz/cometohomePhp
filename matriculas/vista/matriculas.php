@@ -29,7 +29,7 @@ $matriculas = new Matriculas();
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
             </div>
 
@@ -51,16 +51,17 @@ $matriculas = new Matriculas();
         <!---->
         <div class="row d-flex justify-content-center py-3">
 
-            <div class="card rounded-0 border-0">
-                <table class='table table-hover table-sm table-responsive border'>
-                    <tr>
+            <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+                <table class='table table-hover table-sm  border-0 table-light' style="cursor: pointer;">
+                    <!--tr class="table-active">
                         <th>Fecha</th>
                         <th>Identificación</th>
                         <th>Estudiante</th>
                         <th>Telefono</th>
                         <th>Programa</th>
                         <th>opciones</th>
-                    </tr>
+                    </tr-->
+                     <h5><i class="fas fa-list"></i> Matrículas</h5><hr class="p-0 m-0">
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -69,18 +70,38 @@ $matriculas = new Matriculas();
                         if ($Inscripciones != null) {
                             foreach ($Inscripciones as $Inscripciones) {
                         ?>
-                                <td><?php echo $Inscripciones['fecha'] ?></td>
+
+                        <td colspan="6">
+
+                            <div class="d-flex justify-content-between mb-2">  
+                                <div>Fecha: <?php echo $Inscripciones['fecha'] ?></div>
+
+                                <div>
+                                    <?php if ($Inscripciones['matriculado'] != "1") { ?>
+                                        <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo  $Inscripciones['id_inscripcion'] ?>' id='btn-matricular'><i class='fas fa-user-graduate' style='pointer-events: none;'></i> Matricular</button>
+                                    <?php } else { ?>
+                                        <span class="text-success"><i class='far fa-check-square' style='pointer-events: none;'></i> Matriculado</span>
+                                    <?php } ?>
+                                </div>
+                            </div> 
+                            <span class="text-muted"><b>Id:</b> <?php echo $Inscripciones['cc_estudiante'] ?></span><br>
+                            <span class="text-muted"><b>Estudiante:</b> <?php echo $Inscripciones['estudiante'] ?></span><br>
+                            <span class="text-muted"><b>Teléfono:</b> <?php echo $Inscripciones['telefono'] ?></span><br>
+                            <span class="text-muted"><b>Programa:</b> <?php echo $Inscripciones['programa'] ?></span><br>
+
+
+
+
+                             <hr class="p-0 m-0  mt-2">
+                        </td>
+
+
+                                <!--td><?php echo $Inscripciones['fecha'] ?></td>
                                 <td><?php echo $Inscripciones['cc_estudiante'] ?></td>
                                 <td><?php echo $Inscripciones['estudiante'] ?></td>
                                 <td><?php echo $Inscripciones['telefono'] ?></td>
                                 <td><?php echo $Inscripciones['programa'] ?></td>
-                                <td>
-                                    <?php if ($Inscripciones['matriculado'] != "1") { ?>
-                                        <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo  $Inscripciones['id_inscripcion'] ?>' id='btn-matricular'><i class='fas fa-user-graduate' style='pointer-events: none;'></i> Matricular</button>
-                                    <?php } else { ?>
-                                        <button type='button' class='btn btn-sm btn-outline-success' disabled><i class='far fa-check-square' style='pointer-events: none;'></i> Matriculado</button>
-                                    <?php } ?>
-                                </td>
+                                <td-->
                     </tr>
             <?php
                             }

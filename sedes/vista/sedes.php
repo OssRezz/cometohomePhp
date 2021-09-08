@@ -28,7 +28,7 @@ $sedes = new Sedes();
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
             </div>
 
@@ -52,7 +52,7 @@ $sedes = new Sedes();
         <!---->
         <div class="row d-flex justify-content-center align-items-start py-3">
 
-            <div class="card mx-3 rounded-0" style="width: 23rem;">
+            <div class="card mx-3 rounded-0 mb-5" style="width: 23rem;">
 
                 <div class="card-header">
                     <h5><i class="fas fa-plus"></i> Registrar sede</h5>
@@ -82,21 +82,13 @@ $sedes = new Sedes();
 
             </div>
 
-        </div>
+        
 
+            <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+                <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
 
-        <div class="row d-flex justify-content-center ">
-
-            <div class="card rounded-0 border-0">
-                <table class='table table-hover table-sm table-responsive border'>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre de sede</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
-                        <th>Aula</th>
-                        <th>opciones</th>
-                    </tr>
+                    <h5><i class="fas fa-list"></i> Lista de Sedes</h5><hr class="p-0 m-0">
+                    
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -105,16 +97,27 @@ $sedes = new Sedes();
                         if ($Sedes != null) {
                             foreach ($Sedes as $Sedes) {
                         ?>
-                                <td><?php echo $Sedes['id_sede'] ?></td>
-                                <td><?php echo $Sedes['nombre'] ?></td>
-                                <td><?php echo $Sedes['direccion'] ?></td>
-                                <td><?php echo $Sedes['telefono'] ?></td>
-                                <td><?php echo $Sedes['aula'] ?></td>
 
-                                <td>
-                                    <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo $Sedes['id_sede'] ?>' id='btn-editar-sede'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                    <button class='btn btn-sm btn-outline-danger' value='<?php echo $Sedes['id_sede'] ?>"' id='btn-borrar-sede'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
-                                </td>
+
+
+                        <td colspan="6">
+
+                            <div class="d-flex justify-content-between mb-2">  
+                                <div>ID<?php echo $Sedes['id_sede'] ?></div>
+                                <div>
+                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Sedes['id_sede'] ?>' id='btn-editar-sede'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                    <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Sedes['id_sede'] ?>"' id='btn-borrar-sede'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
+                                </div>
+                            </div> 
+
+                            <span class="text-primary"><?php echo strtoupper($Sedes['nombre']) ?></span><br>
+                            <span class="text-muted"><b>Dirección: </b><?php echo $Sedes['direccion'] ?><br></span>
+                            <span class="text-muted"><b>Teléfono: </b><?php echo $Sedes['telefono'] ?> &nbsp;&nbsp;&nbsp;&nbsp;<b>Aula: </b><?php echo $Sedes['aula'] ?></span>
+
+                            <hr class="p-0 m-0  mt-2">    
+                        </td>
+
+
                     </tr>
             <?php }
                         } ?>

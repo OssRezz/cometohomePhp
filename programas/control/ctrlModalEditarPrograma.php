@@ -99,7 +99,7 @@ if ($id_programa != null) {
         $contenidoModal .= "</div>";
         $contenidoModal .= "<div class='form-group mb-2'>";
         $contenidoModal .= " <div class='col'>";
-        $contenidoModal .= "     <label for='costoPrograma'>Edad</label>";
+        $contenidoModal .= "     <label for='costoPrograma'>Costo</label>";
         $contenidoModal .= "     <input type='number' id='costoPrograma' class='form-control' value='$costo'>";
         $contenidoModal .= " </div> ";
         $contenidoModal .= "</div>";

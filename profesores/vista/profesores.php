@@ -89,16 +89,18 @@ $profesores = new Profesores();
 
             </div>
 
-            <div class="card rounded-0 border-0">
-                <table class='table table-hover table-sm table-responsive border'>
-                    <tr>
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
+                <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
+                    <!--tr class="table-active">
                         <th>Cédula </th>
                         <th>Nombre</th>
                         <th>Titulo</th>
                         <th>Correo</th>
                         <th>Teléfono </th>
                         <th>opciones</th>
-                    </tr>
+                    </tr-->
+                    <h5><i class="fas fa-list"></i> Profesores</h5><hr class="p-0 m-0">
+
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -107,14 +109,23 @@ $profesores = new Profesores();
                         if ($Profesores != null) {
                             foreach ($Profesores as $Profesores) {
                         ?>
-                                <td><?php echo $Profesores['cc_profesor'] ?></td>
-                                <td><?php echo $Profesores['nombre'] ?></td>
-                                <td><?php echo $Profesores['titulo'] ?></td>
-                                <td><?php echo $Profesores['email'] ?></td>
-                                <td><?php echo $Profesores['telefono'] ?></td>
-                                <td>
-                                    <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo $Profesores['cc_profesor'] ?>' id='btn-editar-profesor'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                </td>
+
+                        <td colspan="6">
+
+                            <div class="d-flex justify-content-between mb-2">  
+                                <div><b class="text-muted">Id:</b> <?php echo $Profesores['cc_profesor'] ?></div>
+                                <div>
+                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Profesores['cc_profesor'] ?>' id='btn-editar-profesor'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                </div>
+                            </div> 
+
+                        <b class="text-muted"> Nombre:</b><span class="text-primary"> <?php echo strtoupper($Profesores['nombre']) ?></span><br>
+                        <span class="text-muted"><b>Titulo: </b><?php echo $Profesores['titulo'] ?><br></span>
+                        <span class="text-muted"><b>Correo: </b><?php echo $Profesores['email'] ?><br></span>
+                        <span class="text-muted"><b>Teléfono: </b><?php echo $Profesores['telefono'] ?><br></span>
+
+                        <hr class="p-0 m-0  mt-2">   
+                        </td>
                     </tr>
             <?php }
                         } ?>

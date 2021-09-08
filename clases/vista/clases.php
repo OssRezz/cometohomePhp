@@ -29,7 +29,7 @@ $date = date('Y-m-d');
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
             </div>
 
@@ -57,7 +57,7 @@ $date = date('Y-m-d');
         <!---->
         <div class="row d-flex justify-content-center align-items-start py-3">
 
-            <div class="card mx-3 mb-4 rounded-0" style="width: 25rem;">
+            <div class="card mx-3 mb-4 rounded-0 " style="width: 25rem;">
                 <div class="card-header">
                     <h5><i class="fas fa-plus"></i> Registrar clase</h5>
                 </div>
@@ -102,16 +102,19 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0">
-                <table class='table table-hover table-sm table-responsive border'>
-                    <tr>
+            <div class="card rounded-0 border-0 mx-4"  style="width: 26rem;">
+                <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
+                    <!--tr class="table-active">
                         <th>Grupo</th>
                         <th>Fecha inicio</th>
                         <th>Fecha fin</th>
                         <th>N° de clases</th>
                         <th>Estado</th>
                         <th>opciones</th>
-                    </tr>
+                    </tr-->
+                    <h5><i class="fas fa-list"></i> Clases</h5><hr class="p-0 m-0">
+
+
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -120,22 +123,48 @@ $date = date('Y-m-d');
                         if ($Clases != null) {
                             foreach ($Clases as $Clases) {
                         ?>
-                                <td><?php echo $Clases['grupo'] ?></td>
+
+
+                        <td colspan="6">
+                            <div class="d-flex justify-content-between mb-2">  
+                                <div class="text-muted"> <b>inicio:</b> <?php echo $Clases['fechainicio'] ?>&nbsp;&nbsp;&nbsp;&nbsp;
+                                     <b>fin:</b> <?php echo $Clases['fechafin'] ?>
+
+                                </div>
+                                <div>
+                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Clases['id_clase'] ?>' id='btn-editar-clase'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                </div>
+                            </div> 
+
+                        <b class="text-muted">Grupo:</b><span class="text-primary"> <?php echo strtoupper($Clases['grupo']) ?></span><br>
+                        <span class="text-muted"><b>Número de clases: </b><?php echo $Clases['numeroclases'] ?><br></span>  
+                        <?php
+                                    if ($Clases['estado']  != 1) { ?>
+                                        <span class="text-white bg-danger px-2 rounded-pill " style="font-size: 14px;">Inactivo</span>
+                                    <?php } else { ?>
+                                        <span class="text-white bg-success px-2 rounded-pill " style="font-size: 14px;">Activo</span>
+                                    <?php } ?>
+
+
+                         <hr class="p-0 m-0  mt-2">
+
+                        </td>
+
+                        
+
+
+                                <!--td><?php echo $Clases['grupo'] ?></td>
                                 <td><?php echo $Clases['fechainicio'] ?></td>
                                 <td><?php echo $Clases['fechafin'] ?></td>
-                                <td><?php echo $Clases['numeroclases'] ?></td>
+                                <td class="text-center"><?php echo $Clases['numeroclases'] ?></td>
                                 <td>
                                     <?php
                                     if ($Clases['estado']  != 1) { ?>
-                                        <div class='text-danger'><b>Inactivo</b></div>
+                                        <div class='text-danger'>Inactivo</div>
                                     <?php } else { ?>
-                                        <div class='text-success'><b>Activo</b></div>
+                                        <div class='text-success'>Activo</div>
                                     <?php } ?>
-                                </td>
-
-                                <td>
-                                    <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo $Clases['id_clase'] ?>' id='btn-editar-clase'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                </td>
+                                </td-->
                     </tr>
             <?php }
                         } ?>

@@ -52,16 +52,23 @@ $matriculas = new Matriculas();
         <div class="row d-flex justify-content-center py-3">
 
             <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+
+                <div class="card-body px-0">
+
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+                      </div>
+                    </div>
+                    
+                </div>
+
+
                 <table class='table table-hover table-sm  border-0 table-light' style="cursor: pointer;">
-                    <!--tr class="table-active">
-                        <th>Fecha</th>
-                        <th>Identificación</th>
-                        <th>Estudiante</th>
-                        <th>Telefono</th>
-                        <th>Programa</th>
-                        <th>opciones</th>
-                    </tr-->
+
                      <h5><i class="fas fa-list"></i> Matrículas</h5><hr class="p-0 m-0">
+
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -85,7 +92,7 @@ $matriculas = new Matriculas();
                                 </div>
                             </div> 
                             <span class="text-muted"><b>Id:</b> <?php echo $Inscripciones['cc_estudiante'] ?></span><br>
-                            <span class="text-muted"><b>Estudiante:</b> <?php echo $Inscripciones['estudiante'] ?></span><br>
+                            <b class="text-muted">Estudiante:</b><span class="text-primary" style="font-size: 14px;"> <?php echo strtoupper($Inscripciones['estudiante']) ?></span><br>
                             <span class="text-muted"><b>Teléfono:</b> <?php echo $Inscripciones['telefono'] ?></span><br>
                             <span class="text-muted"><b>Programa:</b> <?php echo $Inscripciones['programa'] ?></span><br>
 

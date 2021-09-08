@@ -25,7 +25,7 @@ $estudiantes = new Estudiantes();
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 3; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
             </div>
 
@@ -49,21 +49,23 @@ $estudiantes = new Estudiantes();
         <!---->
         <div class="row d-flex justify-content-center py-3">
 
-            <div class="card border-top-0  rounded-0">
+            <div class="card border-0  rounded-0 mb-5" style="width: 26rem;">
 
-                <table class='table table-hover table-sm table-responsive border'>
-                    <tr>
-                        <th>Cédula </th>
-                        <th>Estudiante</th>
-                        <th>Nacimiento</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>Direccion</th>
-                        <th>Sisben</th>
-                        <th>Genero</th>
-                        <th>Poblacion</th>
-                        <th>Opciones</th>
-                    </tr>
+                <div class="card-body px-0">
+
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+                      </div>
+                    </div>
+                    
+                </div>
+
+                <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
+
+                    <h5><i class="fas fa-list"></i> Alumnos</h5><hr class="p-0 m-0">
+
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -72,19 +74,33 @@ $estudiantes = new Estudiantes();
                         if ($Estudiantes != null) {
                             foreach ($Estudiantes as $Estudiantes) {
                         ?>
-                                <td><?php echo $Estudiantes['cc_estudiante'] ?></td>
-                                <td><?php echo $Estudiantes['nombre'] ?></td>
-                                <td><?php echo $Estudiantes['fechanaci'] ?></td>
-                                <td><?php echo $Estudiantes['email'] ?></td>
-                                <td><?php echo $Estudiantes['telefono'] ?></td>
-                                <td><?php echo $Estudiantes['direccion'] ?></td>
-                                <td><?php echo $Estudiantes['sisben'] ?></td>
-                                <td><?php echo $Estudiantes['genero'] ?></td>
-                                <td><?php echo $Estudiantes['poblacion'] ?></td>
 
-                                <td>
-                                    <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo $Estudiantes['cc_estudiante'] ?>' id='btn-editar-estudiante'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                </td>
+
+                        <td >
+                            <div class="d-flex justify-content-between mb-2">  
+                                <div class="text-muted"><b>Id:</b> <?php echo $Estudiantes['cc_estudiante'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="text-muted"><b>Teléfono: </b><?php echo $Estudiantes['telefono'] ?></span>
+
+                            </div>
+                                <div>
+                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Estudiantes['cc_estudiante'] ?>' id='btn-editar-estudiante'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                </div>
+                            </div> 
+
+                            <span class="text-primary"><?php echo strtoupper($Estudiantes['nombre']) ?></span><br>
+                            <span class="text-muted"><b>Fecha de inicio: </b><?php echo $Estudiantes['fechanaci'] ?><br></span>
+                            <span class="text-muted"><b>Correo: </b><?php echo $Estudiantes['email'] ?><br></span>
+                            <span class="text-muted"><b>Dirección: </b><?php echo $Estudiantes['direccion'] ?><br></span>
+                            <span class="text-muted"><b>Sisben: </b><?php echo $Estudiantes['sisben'] ?><span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="text-muted"><b>Genero: </b><?php echo $Estudiantes['genero'] ?></span>
+                            <br></span>
+                            <span class="text-muted"><b>Población: </b><?php echo $Estudiantes['poblacion'] ?><br></span>
+
+
+
+                            <hr class="p-0 m-0  mt-2"> 
+                        </td>
                     </tr>
             <?php
                             }

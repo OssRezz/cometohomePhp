@@ -134,16 +134,12 @@ $date = date('Y-m-d');
                         if ($Asisestudiante != null) {
                             foreach ($Asisestudiante as $Asisestudiante) {
                         ?>
-
-
-
-
-                                <td><?php echo $Asisestudiante['cc_estudiante'] ?></td>
-                                <td><?php echo $Asisestudiante['nombre'] ?></td>
-                                <td><?php echo $Asisestudiante['grupo'] ?></td>
-                                <td><?php echo $Asisestudiante['numeroclases'] ?></td>
-                                <td><?php echo $Asisestudiante['asistencia'] ?></td>
-                                <td><?php echo $Asisestudiante['fecha'] ?></td>
+                        <td><?php echo $Asisestudiante['cc_estudiante'] ?></td>
+                        <td><?php echo $Asisestudiante['nombre'] ?></td>
+                        <td><?php echo $Asisestudiante['grupo'] ?></td>
+                        <td><?php echo $Asisestudiante['numeroclases'] ?></td>
+                        <td><?php echo $Asisestudiante['asistencia'] ?></td>
+                        <td><?php echo $Asisestudiante['fecha'] ?></td>
 
 
                     </tr>

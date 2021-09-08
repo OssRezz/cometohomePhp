@@ -117,14 +117,6 @@ $date = date('Y-m-d');
 
             <div class="card rounded-0 border-0 mx-4"  style="width: 26rem;">
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
-                    <!--tr class="table-active">
-                        <th>Cédula </th>
-                        <th>Profesor</th>
-                        <th>Clase</th>
-                        <th>N° clases</th>
-                        <th>Asistencias</th>
-                        <th>Fecha</th>
-                    </tr-->
 
                     <h5><i class="fas fa-list"></i> Lista de Asistencia de profesores</h5><hr class="p-0 m-0">
                     <tr>
@@ -149,22 +141,7 @@ $date = date('Y-m-d');
                         <span class="text-muted"><b>Grupo: </b><?php echo $Asisprofesor['grupo'] ?><br></span>
                         <span class="text-muted"><b>Número de clases: </b><?php echo $Asisprofesor['numeroclases'] ?><br></span>
                         <b class="text-muted">Asistencias: </b><span class="text-muted"> <?php echo $Asisprofesor['asistencia'] ?><br></span>
-
-
-
-
-
-
-
                         </td>
-
-
-                                <!--td><?php echo $Asisprofesor['cc_profesor'] ?></td>
-                                <td><?php echo $Asisprofesor['nombre'] ?></td>
-                                <td><?php echo $Asisprofesor['grupo'] ?></td>
-                                <td><?php echo $Asisprofesor['numeroclases'] ?></td>
-                                <td><?php echo $Asisprofesor['asistencia'] ?></td>
-                                <td><?php echo $Asisprofesor['fecha'] ?></td-->
 
                     </tr>
             <?php }

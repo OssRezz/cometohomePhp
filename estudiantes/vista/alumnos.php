@@ -49,7 +49,7 @@ $estudiantes = new Estudiantes();
         <!---->
         <div class="row d-flex justify-content-center py-3">
 
-            <div class="card border-0  rounded-0 mb-5" style="width: 26rem;">
+            <div class="card border-0  rounded-0 mb-5 mx-4" style="width: 26rem;">
 
                 <div class="card-body px-0">
 
@@ -81,7 +81,7 @@ $estudiantes = new Estudiantes();
                                 <div class="text-muted"><b>Id:</b> <?php echo $Estudiantes['cc_estudiante'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="text-muted"><b>Teléfono: </b><?php echo $Estudiantes['telefono'] ?></span>
 
-                            </div>
+                                </div>
                                 <div>
                                     <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Estudiantes['cc_estudiante'] ?>' id='btn-editar-estudiante'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
                                 </div>

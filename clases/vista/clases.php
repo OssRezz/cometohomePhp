@@ -126,9 +126,9 @@ $date = date('Y-m-d');
 
 
                         <td colspan="6">
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div class="text-muted"> <b>inicio:</b> <?php echo $Clases['fechainicio'] ?>&nbsp;&nbsp;&nbsp;&nbsp;
-                                     <b>fin:</b> <?php echo $Clases['fechafin'] ?>
+                            <div class="d-flex justify-content-between mb-2" style="font-size: 15px;">  
+                                <div class="text-muted"> <b>inicio:</b> <?php echo $Clases['fechainicio'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     <b>finalización:</b> <?php echo $Clases['fechafin'] ?>
 
                                 </div>
                                 <div>

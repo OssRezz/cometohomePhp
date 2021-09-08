@@ -5,7 +5,7 @@ function navBar()
 
     echo "<!--Barra de navegación-->";
     echo "<div class='row bg-dark mb-5 d-flex justify-content-center sticky-top'>";
-    echo  "                <a href='../../reportes/vista/indexAdmin.html' class='border-0 btn btn-w btn-outline-light rounded-0'>Inicio</a>";
+    echo  "                <a href='../../reportes/vista/indexAdmin.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Inicio</a>";
     echo  "                <a href='../../usuarios/vista/usuarios.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Usuarios</a>";
     echo  "                <a href='../../sedes/vista/sedes.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Sedes</a>";
     echo  "                <div class='dropdown'>";

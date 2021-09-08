@@ -112,16 +112,20 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0">
-                <table class='table table-hover table-sm table-responsive border'>
-                    <tr>
+            <div class="card rounded-0 border-0 mx-4"style="width: 26rem;">
+                <table class='table table-hover table-sm table-responsive border-0 table-light' style="cursor: pointer;">
+                    <!--tr class="table-active">
                         <th>Cédula </th>
                         <th>Estudiante</th>
                         <th>Clase</th>
-                        <th>N~ De clases</th>
+                        <th>N° clases</th>
                         <th>Asistencias</th>
                         <th>Fecha</th>
-                    </tr>
+                    </tr-->
+
+                    <h5><i class="fas fa-list"></i> Lista de asistencia de Alumnos</h5><hr class="p-0 m-0">
+
+
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -130,18 +134,33 @@ $date = date('Y-m-d');
                         if ($Asisestudiante != null) {
                             foreach ($Asisestudiante as $Asisestudiante) {
                         ?>
+
+
+
+
                                 <td><?php echo $Asisestudiante['cc_estudiante'] ?></td>
                                 <td><?php echo $Asisestudiante['nombre'] ?></td>
                                 <td><?php echo $Asisestudiante['grupo'] ?></td>
                                 <td><?php echo $Asisestudiante['numeroclases'] ?></td>
                                 <td><?php echo $Asisestudiante['asistencia'] ?></td>
                                 <td><?php echo $Asisestudiante['fecha'] ?></td>
+
+
                     </tr>
             <?php }
-                        } ?>
+                        }else{?>
+                         <span><i>No hay asistencias registradas actualmente.</i></span>   
+
+                        <?php } ?>
                 </table>
-                <!-- Pagination -->
+
+                <?php 
+                #Pagination
+                if ($Asisestudiante != null) { ?>
+
                 <div class="col d-flex justify-content-center" id="paginacion"></div>
+
+                <?php } ?>                
             </div>
 
         </div>

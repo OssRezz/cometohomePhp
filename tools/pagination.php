@@ -16,21 +16,21 @@ class Paginacion
 
 
         if ($cur_page <= 1) {
-            echo "<li class='page-item disabled pr-1'>";
+            echo "<li class='page-item disabled mx-1'>";
         } else {
-            echo "<li class='page-item pr-1'>";
+            echo "<li class='page-item mx-1'>";
         }
 
 
         if ($cur_page <= 1) {
-            echo "<a class='btn btn-outline-success btn-sm' href='#'><</a></li>";
+            echo "<a class='btn btn-outline-primary btn-sm' href='#'><i class='fas fa-chevron-left'></i></a></li>";
         } else {
-            echo "<a class='btn btn-outline-success btn-sm' href='$base_url?page=$anterior'>Anterior</a></li>";
+            echo "<a class='btn btn-outline-primary btn-sm' href='$base_url?page=$anterior'><i class='fas fa-chevron-left'></i></a></li>";
         }
 
         for ($i = 1; $i <= $number_of_pages; $i++) {
             if ($i == $cur_page) {
-                echo "<li class='page-item active'><a class='page-link rounded' href='$base_url?page=$i'> $i</a></li>";
+                echo "<li class='page-item active mx-1'><a class='page-link rounded' href='$base_url?page=$i'>$i</a></li>";
                 $dots = true;
             } else {
 
@@ -51,15 +51,15 @@ class Paginacion
         }
 
         if ($cur_page >= $number_of_pages) {
-            echo "<li class='page-item disabled pl-1'>";
+            echo "<li class='page-item disabled mx-1'>";
         } else {
-            echo "<li class='page-item  pl-1'>";
+            echo "<li class='page-item  mx-1'>";
         }
 
         if ($cur_page >= $number_of_pages) {
-            echo "<a class='btn btn-outline-success btn-sm' href='#'>></a>";
+            echo "<a class='btn btn-outline-primary btn-sm' href='#'><i class='fas fa-chevron-right'></i></a>";
         } else {
-            echo "<a class='btn btn-outline-success btn-sm' href='$base_url?page=$siguiente'>Siguiente</a>";
+            echo "<a class='btn btn-outline-primary btn-sm' href='$base_url?page=$siguiente'><i class='fas fa-chevron-right'></i></a>";
         }
 
         echo      "</ul>";

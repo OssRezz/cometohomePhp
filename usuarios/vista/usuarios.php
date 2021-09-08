@@ -28,7 +28,7 @@ $usuarios = new Usuarios();
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
             </div>
 
@@ -101,17 +101,19 @@ $usuarios = new Usuarios();
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0">
-                <table class='table table-hover table-sm table-responsive border'>
+            <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+                <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
+                    <!--tr class="table-active">
+                        <th class="text-center">Código</th>
+                        <th class="text-center">Identificación</th>
+                        <th class="text-center">Nombre</th>
+                        <th >Email</th>
+                        <th >Perfil</th>
+                        <th class="text-center">opciones</th>
+                    </tr-->
+                    <h5><i class="fas fa-list"></i> Usuarios registrados</h5><hr class="p-0 m-0">
                     <tr>
-                        <th>Codigo</th>
-                        <th>Identificación</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Perfil</th>
-                        <th>opciones</th>
-                    </tr>
-                    <tr>
+
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
                         $Usuarios = $usuarios->listarUsuarios($paginationStart, $limit);
@@ -119,19 +121,38 @@ $usuarios = new Usuarios();
                         if ($Usuarios != null) {
                             foreach ($Usuarios as $Usuarios) {
                         ?>
-                                <td><?php echo $Usuarios['codigo'] ?></td>
-                                <td><?php echo $Usuarios['identificacion'] ?></td>
-                                <td><?php echo $Usuarios['nombre'] ?></td>
-                                <td><?php echo $Usuarios['email'] ?></td>
-                                <td><?php echo $Usuarios['perfil'] ?></td>
 
-                                <td>
-                                    <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo $Usuarios['codigo'] ?>' id='btn-editar-usuario'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                    <button class='btn btn-sm btn-outline-danger' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
-                                </td>
+                        <td colspan="6">
 
 
+                                
 
+                            <div class="d-flex justify-content-between mb-2">  
+                                <div>CODIGO<?php echo $Usuarios['codigo'] ?></div>
+                                <div>
+                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Usuarios['codigo'] ?>' id='btn-editar-usuario'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                    <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
+                                </div>
+                            </div> 
+
+                            <span class="text-muted"><b>Id: </b><?php echo $Usuarios['identificacion'] ?></span><br>
+                            <span class="text-muted"><b>Nombre: </b><?php echo $Usuarios['nombre'] ?></span><br>
+                            <span class="text-muted"><b>Correo: </b><?php echo $Usuarios['email'] ?></span><br>
+
+
+                            <?php if ( $Usuarios['perfil'] == 'Administrador' ): ?>
+                                <span class="text-white bg-warning px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
+                            <?php elseif ($Usuarios['perfil'] == 'Profesor'): ?>
+                               <span class="text-white bg-info px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
+                            <?php else: ?>  
+                                <span class="text-white bg-dark px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
+                            <?php endif ?>
+
+                            <hr class="p-0 m-0 mt-2"> 
+
+
+
+                        </td>
                     </tr>
             <?php
                             }

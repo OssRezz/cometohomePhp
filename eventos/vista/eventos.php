@@ -6,7 +6,7 @@ require '../../usuarios/Modelo/ModeloUsuarios.php';
 $usuario = new Usuarios();
 $date = date('Y-m-d');
 $Tiempo = date("H:i", strtotime('time_d'));
-$usuario->sessionAdmin();
+$usuario->sessionProfesor();
 ?>
 
 <!DOCTYPE html>

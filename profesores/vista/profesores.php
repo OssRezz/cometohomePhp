@@ -4,7 +4,7 @@ require '../../usuarios/Modelo/ModeloUsuarios.php';
 
 $usuario = new Usuarios();
 $profesores = new Profesores();
-$usuario->sessionProfesor();
+$usuario->sessionAdmin();
 ?>
 
 <!DOCTYPE html>

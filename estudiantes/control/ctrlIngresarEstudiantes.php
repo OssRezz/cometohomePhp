@@ -50,7 +50,6 @@ try {
         //Si el usuario existe va a retornar true, no queremos repetir dos usuarios con la misma cedula
         $cedulaExiste = $usuarios->existeUsuario($identificacion);
         if ($cedulaExiste) {
-
             $modal->modalInformativa("Registro de estudiantes", "<div class='text-danger'>Ya hay un usuario registrado con esta identificacion, pongase en contacto con la casa de la cultura o verifique la información.</div>");
         } else {
 
@@ -63,14 +62,14 @@ try {
                 && $estudiantes->insertarEstudiante($Identificacion, $Nombre, $Selectgenero, $Selectpoblacion, $Direccion, $Email, $Telefono, $Fecha, $Sisben)
             ) {
 
-                $modal->modalInformativa("Registro de estudiantes", "<div class='text-success'>La cuenta se ha registrado exitosamente.</div>");
+                $modal->modalAlerta("Registro de estudiantes", "success", "La cuenta se ha registrado exitosamente.");
             } else {
-                $modal->modalInformativa("Registro de estudiantes", "<div class='text-danger'>La cuenta no se pudo registrar, esto debido a un error en nuestros servidores.</div>");
+                $modal->modalInformativa("Registro de estudiantes",  "La cuenta no se pudo registrar, esto debido a un error en nuestros servidores.");
             }
         }
     } else {
         $modal->modalInformativa("Registro de estudiantes", "<div class='text-primary'>Todos los datos son obligatorios, verifica la información.</div>");
     }
 } catch (PDOException $e) {
-    $modal->modalInformativa(" de estudiantes", "danger", "<div class='text-danger'>El numero de identificación $cc_estudiante, no se puede registrar debido a que ya existe.</div>");
+    $modal->modalInformativa(" de estudiantes", "<div class='text-danger'>El numero de identificación $cc_estudiante, no se puede registrar debido a que ya existe.</div>");
 }

@@ -12,6 +12,21 @@ $(document).ready(() => {
         $('#paginacion').html(responseText);
     });
 
+    //Modal Para salir de la sesión ctrlModalOut
+    $("#btn-logOut").click(function (e) {
+        $.post('../control/ctrlModalOut.php', {}, function (responseText) {
+            $('#respuesta').html(responseText);
+        });
+    });
+    //Cerrar la sesion, volver al index. ctrlSesiónDestroy
+    $(document).click(function (e) {
+        if (e.target.id === "btn-sesionOut") {
+            $.post('../control/ctrlSesionDestroy.php', {}, function (responseText) {
+                $('#respuesta').html(responseText);
+            });
+        }
+    });
+
 
     //ingresar un usuario
     $("#btn-ingresar-usuario").click(function (e) {
@@ -34,7 +49,7 @@ $(document).ready(() => {
         });
     });
 
-    
+
 
     $(document).click(function (e) {
 

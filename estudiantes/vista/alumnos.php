@@ -1,7 +1,11 @@
 <?php
 require '../Modelo/ModeloEstudiantes.php';
+require '../../usuarios/Modelo/ModeloUsuarios.php';
+
+$usuario = new Usuarios();
 $estudiantes = new Estudiantes();
 
+$usuario->sessionProfesor();
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +34,7 @@ $estudiantes = new Estudiantes();
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -38,7 +42,7 @@ $estudiantes = new Estudiantes();
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
-
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -54,17 +58,18 @@ $estudiantes = new Estudiantes();
                 <div class="card-body px-0">
 
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
-                      </div>
+                        <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+                        </div>
                     </div>
-                    
+
                 </div>
 
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
 
-                    <h5><i class="fas fa-list"></i> Alumnos</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Alumnos</h5>
+                    <hr class="p-0 m-0">
 
                     <tr>
                         <?php
@@ -76,31 +81,31 @@ $estudiantes = new Estudiantes();
                         ?>
 
 
-                        <td >
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div class="text-muted"><b>Id:</b> <?php echo $Estudiantes['cc_estudiante'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="text-muted"><b>Teléfono: </b><?php echo $Estudiantes['telefono'] ?></span>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="text-muted"><b>Id:</b> <?php echo $Estudiantes['cc_estudiante'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class="text-muted"><b>Teléfono: </b><?php echo $Estudiantes['telefono'] ?></span>
 
-                                </div>
-                                <div>
-                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Estudiantes['cc_estudiante'] ?>' id='btn-editar-estudiante'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                </div>
-                            </div> 
+                                        </div>
+                                        <div>
+                                            <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Estudiantes['cc_estudiante'] ?>' id='btn-editar-estudiante'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                        </div>
+                                    </div>
 
-                            <span class="text-primary"><?php echo strtoupper($Estudiantes['nombre']) ?></span><br>
-                            <span class="text-muted"><b>Fecha de inicio: </b><?php echo $Estudiantes['fechanaci'] ?><br></span>
-                            <span class="text-muted"><b>Correo: </b><?php echo $Estudiantes['email'] ?><br></span>
-                            <span class="text-muted"><b>Dirección: </b><?php echo $Estudiantes['direccion'] ?><br></span>
-                            <span class="text-muted"><b>Sisben: </b><?php echo $Estudiantes['sisben'] ?><span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class="text-muted"><b>Genero: </b><?php echo $Estudiantes['genero'] ?></span>
-                            <br></span>
-                            <span class="text-muted"><b>Población: </b><?php echo $Estudiantes['poblacion'] ?><br></span>
+                                    <span class="text-primary"><?php echo strtoupper($Estudiantes['nombre']) ?></span><br>
+                                    <span class="text-muted"><b>Fecha de inicio: </b><?php echo $Estudiantes['fechanaci'] ?><br></span>
+                                    <span class="text-muted"><b>Correo: </b><?php echo $Estudiantes['email'] ?><br></span>
+                                    <span class="text-muted"><b>Dirección: </b><?php echo $Estudiantes['direccion'] ?><br></span>
+                                    <span class="text-muted"><b>Sisben: </b><?php echo $Estudiantes['sisben'] ?><span>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class="text-muted"><b>Genero: </b><?php echo $Estudiantes['genero'] ?></span>
+                                            <br></span>
+                                        <span class="text-muted"><b>Población: </b><?php echo $Estudiantes['poblacion'] ?><br></span>
 
 
 
-                            <hr class="p-0 m-0  mt-2"> 
-                        </td>
+                                        <hr class="p-0 m-0  mt-2">
+                                </td>
                     </tr>
             <?php
                             }

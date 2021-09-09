@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../conexion.php';
+session_start();
 
 class Usuarios extends Conexion
 {
@@ -9,7 +10,61 @@ class Usuarios extends Conexion
         $this->db = parent::__construct();
     }
 
+    public function iniciarSesion($identificacion)
+    {
+        $statement = $this->db->prepare("SELECT * FROM tbl_usuarios WHERE identificacion=:identificacion");
+        $statement->bindParam(':identificacion', $identificacion);
+        $statement->execute();
+        if ($statement->rowCount() === 1) {
+            $consulta = $statement->fetch();
+            $_SESSION['nombre'] = $consulta["nombre"];
+            $_SESSION['perfil'] = $consulta["id_perfil"];
+            return true;
+        }
+        return false;
+    }
 
+    public function logOut()
+    {
+        session_destroy();
+    }
+
+    public function sessionAdmin()
+    {
+        if ($_SESSION['nombre'] != null) {
+            if ($_SESSION['perfil'] != 1) {
+                header('Location: ../../profesores/vista/profesores.php');
+            }
+        } else {
+            header('Location: ../../index.html');
+        }
+    }
+
+    public function sessionProfesor()
+    {
+        if ($_SESSION['nombre'] != null) {
+            if ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 2) {
+                header('Location: ../../index.html');
+            }
+        } else {
+            header('Location: ../../index.html');
+        }
+    }
+
+
+    public function getUsuario()
+    {
+        if ($_SESSION['nombre'] != null) {
+            return $_SESSION['nombre'];
+        } else {
+            header('Location: ../../index.html');
+        }
+    }
+
+    public function getPerfil()
+    {
+        return $_SESSION['perfil'];
+    }
 
     public function listarUsuarios($paginationStart, $limit)
     {
@@ -46,6 +101,18 @@ class Usuarios extends Conexion
             $MostrarUsuarioById[] = $consulta;
         }
         return $MostrarUsuarioById;
+    }
+
+    public function existeUsuario($cedula)
+    {
+        $existeUsuario = null;
+        $statement = $this->db->prepare("SELECT * FROM tbl_usuarios  WHERE identificacion=:cedula");
+        $statement->bindParam(':cedula', $cedula);
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $existeUsuario[] = $consulta;
+        }
+        return $existeUsuario;
     }
 
     public function listarPerfiles()

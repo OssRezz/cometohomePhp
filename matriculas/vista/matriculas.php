@@ -1,7 +1,10 @@
 <?php
 require '../Modelo/ModeloMatriculas.php';
-
+require '../../usuarios/Modelo/ModeloUsuarios.php';
+$usuario = new Usuarios();
 $matriculas = new Matriculas();
+$usuario->sessionAdmin();
+
 ?>
 
 <!DOCTYPE html>
@@ -34,13 +37,14 @@ $matriculas = new Matriculas();
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
             <div class="col d-flex align-items-center pb-4">
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -51,23 +55,24 @@ $matriculas = new Matriculas();
         <!---->
         <div class="row d-flex justify-content-center py-3">
 
-            <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
 
                 <div class="card-body px-0">
 
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
-                      </div>
+                        <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+                        </div>
                     </div>
-                    
+
                 </div>
 
 
                 <table class='table table-hover table-sm  border-0 table-light' style="cursor: pointer;">
 
-                     <h5><i class="fas fa-list"></i> Matrículas</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Matrículas</h5>
+                    <hr class="p-0 m-0">
 
                     <tr>
                         <?php
@@ -78,29 +83,29 @@ $matriculas = new Matriculas();
                             foreach ($Inscripciones as $Inscripciones) {
                         ?>
 
-                        <td colspan="6">
+                                <td colspan="6">
 
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div>Fecha: <?php echo $Inscripciones['fecha'] ?></div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div>Fecha: <?php echo $Inscripciones['fecha'] ?></div>
 
-                                <div>
-                                    <?php if ($Inscripciones['matriculado'] != "1") { ?>
-                                        <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo  $Inscripciones['id_inscripcion'] ?>' id='btn-matricular'><i class='fas fa-user-graduate' style='pointer-events: none;'></i> Matricular</button>
-                                    <?php } else { ?>
-                                        <span class="text-success"><i class='far fa-check-square' style='pointer-events: none;'></i> Matriculado</span>
-                                    <?php } ?>
-                                </div>
-                            </div> 
-                            <span class="text-muted"><b>Id:</b> <?php echo $Inscripciones['cc_estudiante'] ?></span><br>
-                            <b class="text-muted">Estudiante:</b><span class="text-primary" style="font-size: 14px;"> <?php echo strtoupper($Inscripciones['estudiante']) ?></span><br>
-                            <span class="text-muted"><b>Teléfono:</b> <?php echo $Inscripciones['telefono'] ?></span><br>
-                            <span class="text-muted"><b>Programa:</b> <?php echo $Inscripciones['programa'] ?></span><br>
-
-
+                                        <div>
+                                            <?php if ($Inscripciones['matriculado'] != "1") { ?>
+                                                <button type='button' class='btn btn-sm btn-outline-primary' value='<?php echo  $Inscripciones['id_inscripcion'] ?>' id='btn-matricular'><i class='fas fa-user-graduate' style='pointer-events: none;'></i> Matricular</button>
+                                            <?php } else { ?>
+                                                <span class="text-success"><i class='far fa-check-square' style='pointer-events: none;'></i> Matriculado</span>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <span class="text-muted"><b>Id:</b> <?php echo $Inscripciones['cc_estudiante'] ?></span><br>
+                                    <b class="text-muted">Estudiante:</b><span class="text-primary" style="font-size: 14px;"> <?php echo strtoupper($Inscripciones['estudiante']) ?></span><br>
+                                    <span class="text-muted"><b>Teléfono:</b> <?php echo $Inscripciones['telefono'] ?></span><br>
+                                    <span class="text-muted"><b>Programa:</b> <?php echo $Inscripciones['programa'] ?></span><br>
 
 
-                             <hr class="p-0 m-0  mt-2">
-                        </td>
+
+
+                                    <hr class="p-0 m-0  mt-2">
+                                </td>
 
 
                                 <!--td><?php echo $Inscripciones['fecha'] ?></td>

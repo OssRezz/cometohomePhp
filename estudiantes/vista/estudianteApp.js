@@ -11,7 +11,51 @@ $(document).ready(function () {
         $('#paginacion').html(responseText);
     });
 
+    //Modal Para salir de la sesión ctrlModalOut
+    $("#btn-logOut").click(function (e) {
+        $.post('../../usuarios/control/ctrlModalOut.php', {}, function (responseText) {
+            $('#respuesta').html(responseText);
+        });
+    });
+    //Cerrar la sesion, volver al index. ctrlSesiónDestroy
+    $(document).click(function (e) {
+        if (e.target.id === "btn-sesionOut") {
+            $.post('../../usuarios/control/ctrlSesionDestroy.php', {}, function (responseText) {
+                $('#respuesta').html(responseText);
+            });
+        }
+    });
 
+    $("#btn-ingresar-estudiante").click(function (e) {
+        const identificacion = $('#identificacion').val();
+        const nombre = $('#nombre').val();
+        const apellido = $('#apellido').val();
+        const nacimiento = $('#nacimiento').val();
+        const sisben = $('#sisben').val();
+        const email = $('#email').val();
+        const telefono = $('#telefono').val();
+        const direccion = $('#direccion').val();
+        const selectGenero = $('#selectGenero').val();
+        const selectPoblacion = $('#selectPoblacion').val();
+        const password = $('#password').val();
+        const passwordVerify = $('#passwordVerify').val();
+        $.post('../control/ctrlIngresarEstudiantes.php', {
+            identificacion: identificacion,
+            nombre: nombre,
+            apellido: apellido,
+            nacimiento: nacimiento,
+            sisben: sisben,
+            email: email,
+            telefono: telefono,
+            direccion: direccion,
+            selectGenero: selectGenero,
+            selectPoblacion: selectPoblacion,
+            password: password,
+            passwordVerify: passwordVerify
+        }, function (responseText) {
+            $('#respuesta').html(responseText);
+        });
+    });
 
     $(document).click((e) => {
 

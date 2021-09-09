@@ -1,8 +1,12 @@
 <?php
 require '../Modelo/ModeloClases.php';
+require '../../usuarios/Modelo/ModeloUsuarios.php';
 
+$usuario = new Usuarios();
 $clases = new Clases();
 $date = date('Y-m-d');
+$usuario->sessionAdmin();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +38,7 @@ $date = date('Y-m-d');
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -42,7 +46,7 @@ $date = date('Y-m-d');
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
-
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -102,7 +106,7 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0 mx-4"  style="width: 26rem;">
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
                     <!--tr class="table-active">
                         <th>Grupo</th>
@@ -112,7 +116,8 @@ $date = date('Y-m-d');
                         <th>Estado</th>
                         <th>opciones</th>
                     </tr-->
-                    <h5><i class="fas fa-list"></i> Clases</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Clases</h5>
+                    <hr class="p-0 m-0">
 
 
                     <tr>
@@ -125,20 +130,20 @@ $date = date('Y-m-d');
                         ?>
 
 
-                        <td colspan="6">
-                            <div class="d-flex justify-content-between mb-2" style="font-size: 15px;">  
-                                <div class="text-muted"> <b>inicio:</b> <?php echo $Clases['fechainicio'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                     <b>finalización:</b> <?php echo $Clases['fechafin'] ?>
+                                <td colspan="6">
+                                    <div class="d-flex justify-content-between mb-2" style="font-size: 15px;">
+                                        <div class="text-muted"> <b>inicio:</b> <?php echo $Clases['fechainicio'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <b>finalización:</b> <?php echo $Clases['fechafin'] ?>
 
-                                </div>
-                                <div>
-                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Clases['id_clase'] ?>' id='btn-editar-clase'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                </div>
-                            </div> 
+                                        </div>
+                                        <div>
+                                            <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Clases['id_clase'] ?>' id='btn-editar-clase'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                        </div>
+                                    </div>
 
-                        <b class="text-muted">Grupo:</b><span class="text-primary"> <?php echo strtoupper($Clases['grupo']) ?></span><br>
-                        <span class="text-muted"><b>Número de clases: </b><?php echo $Clases['numeroclases'] ?><br></span>  
-                        <?php
+                                    <b class="text-muted">Grupo:</b><span class="text-primary"> <?php echo strtoupper($Clases['grupo']) ?></span><br>
+                                    <span class="text-muted"><b>Número de clases: </b><?php echo $Clases['numeroclases'] ?><br></span>
+                                    <?php
                                     if ($Clases['estado']  != 1) { ?>
                                         <span class="text-white bg-danger px-2 rounded-pill " style="font-size: 14px;">Inactivo</span>
                                     <?php } else { ?>
@@ -146,11 +151,11 @@ $date = date('Y-m-d');
                                     <?php } ?>
 
 
-                         <hr class="p-0 m-0  mt-2">
+                                    <hr class="p-0 m-0  mt-2">
 
-                        </td>
+                                </td>
 
-                        
+
 
 
                                 <!--td><?php echo $Clases['grupo'] ?></td>

@@ -2,6 +2,7 @@
 require '../Modelo/ModeloUsuarios.php';
 
 $usuarios = new Usuarios();
+$usuarios->sessionAdmin();
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,12 +35,13 @@ $usuarios = new Usuarios();
 
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
             <!--logo-->
             <div class="col d-flex align-items-center pb-4">
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
+            <h5><?php echo $usuarios->getUsuario() ?></h5>
         </div>
 
 
@@ -101,7 +103,7 @@ $usuarios = new Usuarios();
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
                     <!--tr class="table-active">
                         <th class="text-center">Código</th>
@@ -111,7 +113,8 @@ $usuarios = new Usuarios();
                         <th >Perfil</th>
                         <th class="text-center">opciones</th>
                     </tr-->
-                    <h5><i class="fas fa-list"></i> Usuarios registrados</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Usuarios registrados</h5>
+                    <hr class="p-0 m-0">
                     <tr>
 
                         <?php
@@ -122,37 +125,37 @@ $usuarios = new Usuarios();
                             foreach ($Usuarios as $Usuarios) {
                         ?>
 
-                        <td colspan="6">
-
-
-                                
-
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div>CODIGO<?php echo $Usuarios['codigo'] ?></div>
-                                <div>
-                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Usuarios['codigo'] ?>' id='btn-editar-usuario'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                    <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
-                                </div>
-                            </div> 
-
-                            <span class="text-muted"><b>Id: </b><?php echo $Usuarios['identificacion'] ?></span><br>
-                            <span class="text-muted"><b>Nombre: </b><?php echo $Usuarios['nombre'] ?></span><br>
-                            <span class="text-muted"><b>Correo: </b><?php echo $Usuarios['email'] ?></span><br>
-
-
-                            <?php if ( $Usuarios['perfil'] == 'Administrador' ): ?>
-                                <span class="text-white bg-warning px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
-                            <?php elseif ($Usuarios['perfil'] == 'Profesor'): ?>
-                               <span class="text-white bg-info px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
-                            <?php else: ?>  
-                                <span class="text-white bg-dark px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
-                            <?php endif ?>
-
-                            <hr class="p-0 m-0 mt-2"> 
+                                <td colspan="6">
 
 
 
-                        </td>
+
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div>CODIGO<?php echo $Usuarios['codigo'] ?></div>
+                                        <div>
+                                            <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Usuarios['codigo'] ?>' id='btn-editar-usuario'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                            <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
+                                        </div>
+                                    </div>
+
+                                    <span class="text-muted"><b>Id: </b><?php echo $Usuarios['identificacion'] ?></span><br>
+                                    <span class="text-muted"><b>Nombre: </b><?php echo $Usuarios['nombre'] ?></span><br>
+                                    <span class="text-muted"><b>Correo: </b><?php echo $Usuarios['email'] ?></span><br>
+
+
+                                    <?php if ($Usuarios['perfil'] == 'Administrador') : ?>
+                                        <span class="text-white bg-warning px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
+                                    <?php elseif ($Usuarios['perfil'] == 'Profesor') : ?>
+                                        <span class="text-white bg-info px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
+                                    <?php else : ?>
+                                        <span class="text-white bg-dark px-2 rounded-pill" style="font-size: 14px;"><?php echo $Usuarios['perfil'] ?></span>
+                                    <?php endif ?>
+
+                                    <hr class="p-0 m-0 mt-2">
+
+
+
+                                </td>
                     </tr>
             <?php
                             }

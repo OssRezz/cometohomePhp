@@ -17,6 +17,29 @@ $(document).ready(() => {
     });
 
 
+    //Login
+    $("#btn-modal-login").click(function (e) {
+        $.post('usuarios/control/ctrlModalLogin.php', {}, function (responseText) {
+            $('#respuesta').html(responseText);
+        });
+    });
+
+
+    //Login
+    $(document).click(function (e) {
+        $("#btn-inciar-sesion").click(function (e) {
+            e.preventDefault();
+            const identificacion = $('#identificacion').val();
+            const password = $('#password').val();
+            $.post('usuarios/control/ctrlIniciarSesion.php', {
+                identificacion: identificacion,
+                password: password
+            }, function (responseText) {
+                $('#respuesta').html(responseText);
+            });
+        });
+    });
+
     $(document).click(function (e) {
         const accion = e.target.id;
         if (accion === "btn-inscribirse") {

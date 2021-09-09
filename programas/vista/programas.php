@@ -1,10 +1,13 @@
 <?php
 require '../Modelo/ModeloProgramas.php';
 require '../../sedes/Modelo/ModeloSedes.php';
-
+require '../../usuarios/Modelo/ModeloUsuarios.php';
+$usuario = new Usuarios();
 $programas = new Programas();
 $sedes =  new Sedes();
 $date = date('Y-m-d');
+$usuario->sessionAdmin();
+
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +39,7 @@ $date = date('Y-m-d');
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -44,7 +47,7 @@ $date = date('Y-m-d');
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
-
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -57,7 +60,7 @@ $date = date('Y-m-d');
         <!---->
         <div class="row d-flex justify-content-center align-items-start py-3">
 
-            <div class="card mx-3 rounded-0 mb-4"   style="width: 23rem;">
+            <div class="card mx-3 rounded-0 mb-4" style="width: 23rem;">
                 <div class="card-header">
                     <h5><i class="fas fa-plus"></i> Registrar programas</h5>
                 </div>
@@ -89,7 +92,7 @@ $date = date('Y-m-d');
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre" id="nombre" placeholder="Ingresar nombre" class="form-control">
                             </div>
-                            
+
                         </div>
 
                         <div class="form-row my-3">
@@ -110,7 +113,7 @@ $date = date('Y-m-d');
                             </div>
                         </div>
 
-                        <div class="form-row mb-4">                            
+                        <div class="form-row mb-4">
                             <div class="col">
                                 <label for="cupos">Cupos</label>
                                 <input type="number" name="cupos" id="cupos" placeholder="Ingresar cupos" class="form-control">
@@ -125,19 +128,19 @@ $date = date('Y-m-d');
                             <div class="col">
                                 <label for="edad">Limite de edad</label>
                                 <input type="text" name="edad" id="edad" placeholder="Ingresar edad" class="form-control">
-                            </div>                            
+                            </div>
                         </div>
 
-                        <div class="form-row mb-4">  
-                                <div class="col-6">
+                        <div class="form-row mb-4">
+                            <div class="col-6">
                                 <label for="f-inicio">Fecha de inicio</label>
-                                <input type="date" name="f-inicio" id="fechainicio" value="<?php echo $date ?>" class="form-control"  style="font-size: 14px">
+                                <input type="date" name="f-inicio" id="fechainicio" value="<?php echo $date ?>" class="form-control" style="font-size: 14px">
                             </div>
                             <div class="col-6">
                                 <label for="f-final">Fecha final</label>
-                                <input type="date" name="f-final" id="fechafinal" value="<?php echo $date ?>" class="form-control"  style="font-size: 14px">
+                                <input type="date" name="f-final" id="fechafinal" value="<?php echo $date ?>" class="form-control" style="font-size: 14px">
                             </div>
-                        </div>  
+                        </div>
 
                         <div class="form-row mb-4">
                             <div class="col-8">
@@ -164,11 +167,12 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card border-0 rounded-0 p-0 m-0 mx-4"style="width: 26rem;">
+            <div class="card border-0 rounded-0 p-0 m-0 mx-4" style="width: 26rem;">
                 <table class="table border table-hover">
                     <!--Trabajador-->
 
-                    <h5><i class="fas fa-list"></i> Programas</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Programas</h5>
+                    <hr class="p-0 m-0">
 
                     <tr class="">
                         <div id="accordion">
@@ -180,9 +184,9 @@ $date = date('Y-m-d');
                                 foreach ($Programas as $Programas) {
                             ?>
                                     <!--collapseExampleOne es el id -->
-                                        <button class="btn btn-block  border bg-light rounded-0 d-flex justify-content-start py-1 shadow-none px-2 text-dark" data-toggle="collapse" data-target="#collapse<?php echo $Programas['id_programa'] ?>" aria-expanded="true" aria-controls="collapse<?php echo $Programas['id_programa'] ?>"  >
-                                            <span class="text-left"><?php echo $Programas['nombre'] ?></span>
-                                        </button>
+                                    <button class="btn btn-block  border bg-light rounded-0 d-flex justify-content-start py-1 shadow-none px-2 text-dark" data-toggle="collapse" data-target="#collapse<?php echo $Programas['id_programa'] ?>" aria-expanded="true" aria-controls="collapse<?php echo $Programas['id_programa'] ?>">
+                                        <span class="text-left"><?php echo $Programas['nombre'] ?></span>
+                                    </button>
                                     <div class="collapse border border-top-0 " id="collapse<?php echo $Programas['id_programa'] ?>" data-parent="#accordion">
                                         <ul class="list-group list-group-flush text-muted">
                                             <li class="list-group-item lp d-flex justify-content-between">

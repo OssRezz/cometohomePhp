@@ -21,3 +21,6 @@ p{
 .lp{
     padding: 1px 13px 1px 16px;
 }
+textarea {
+  resize: none;
+}

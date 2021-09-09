@@ -50,7 +50,7 @@ $Tiempo = date("H:i", strtotime('time_d'));
 
         <!---->
         <div class="row d-flex justify-content-center py-3">
-            <div class="card mx-3 rounded-0" style="width: 23rem;">
+            <div class="card mx-3 mb-5 rounded-0" style="width: 23rem;">
 
                 <div class="card-header">
                     <h5><i class="fas fa-plus"></i> Registrar evento</h5>
@@ -63,7 +63,7 @@ $Tiempo = date("H:i", strtotime('time_d'));
                     </div>
                     <div class="form-group mb-2">
                         <label for="descripcion">Descripción</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Ingresar descripcion" rows="3"></textarea>
+                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción del evento..." rows="3"></textarea>
                     </div>
                     <div class="form-group mb-4">
                         <label for="fecha">Fecha</label>
@@ -91,7 +91,7 @@ $Tiempo = date("H:i", strtotime('time_d'));
 
             </div>
 
-            <div class="card border-0  rounded-0 mb-5" style="width: 26rem;">
+            <div class="card border-0  rounded-0 mx-4" style="width: 26rem;">
 
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
 
@@ -110,8 +110,9 @@ $Tiempo = date("H:i", strtotime('time_d'));
 
                                 <td>
                                     <div class="d-flex justify-content-between mb-2">
-                                        <div class="text-muted"><b>Inicio:</b> <?php echo $Eventos['horainicio'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <span class="text-muted"><b>Finalización: </b><?php echo $Eventos['horafin'] ?></span>
+                                        <div class="text-muted" style="font-size: 14px;"><b>Desde</b> <?php echo $Eventos['horainicio'] ?>Hrs
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class="text-muted"><b>hasta </b><?php echo $Eventos['horafin'] ?>Hrs</span>
                                         </div>
                                         <div>
                                             <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Eventos['id_evento'] ?>' id='btn-editar-evento'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
@@ -121,8 +122,8 @@ $Tiempo = date("H:i", strtotime('time_d'));
                                     </div>
 
                                     <span class="text-primary"><?php echo strtoupper($Eventos['nombre']) ?></span><br>
-                                    <span class="text-muted"><b>Fecha de evento: </b><?php echo $Eventos['fecha'] ?><br></span>
-                                    <span class="text-muted"><b>Descripción: </b><?php echo $Eventos['descripcion'] ?><br></span>
+                                    <span class="font-weight-normal text-muted" style="font-size: 14px;">Fecha del evento <?php echo $Eventos['fecha'] ?></span><br><br>
+                                    <span class="text-muted" style="font-size: 14px;"><b>Descripción:</b> <?php echo $Eventos['descripcion'] ?><br></span>
                                     <hr class="p-0 m-0  mt-2">
                                 </td>
                     </tr>

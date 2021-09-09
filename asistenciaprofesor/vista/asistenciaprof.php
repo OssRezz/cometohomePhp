@@ -7,7 +7,7 @@ $usuario = new Usuarios();
 $asisprofesor = new Asisprofesor();
 $clases = new Clases();
 $date = date('Y-m-d');
-$usuario->sessionProfesor();
+$usuario->sessionAdmin();
 
 ?>
 

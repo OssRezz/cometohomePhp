@@ -9,31 +9,11 @@ class Usuarios extends Conexion
     {
         $this->db = parent::__construct();
     }
-
-    public function iniciarSesion($identificacion)
-    {
-        $statement = $this->db->prepare("SELECT * FROM tbl_usuarios WHERE identificacion=:identificacion");
-        $statement->bindParam(':identificacion', $identificacion);
-        $statement->execute();
-        if ($statement->rowCount() === 1) {
-            $consulta = $statement->fetch();
-            $_SESSION['nombre'] = $consulta["nombre"];
-            $_SESSION['perfil'] = $consulta["id_perfil"];
-            return true;
-        }
-        return false;
-    }
-
-    public function logOut()
-    {
-        session_destroy();
-    }
-
     public function sessionAdmin()
     {
         if ($_SESSION['nombre'] != null) {
             if ($_SESSION['perfil'] != 1) {
-                header('Location: ../../profesores/vista/profesores.php');
+                header('Location: ../../estudiantes/vista/alumnos.php');
             }
         } else {
             header('Location: ../../index.html');

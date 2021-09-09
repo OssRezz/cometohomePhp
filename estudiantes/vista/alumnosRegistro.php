@@ -26,7 +26,9 @@ $date = date('Y-m-d');
 
         <div class="row bgcc t pt-0 pl-5 pr-0">
 
-
+            <div class="col-12 d-flex justify-content-end align-items-end px-0">
+                <a class="btn btn-primary rounded-0" href="../../login/vista/login.php"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+            </div>
 
             <!--logo-->
             <div class="col d-flex align-items-center pb-4">

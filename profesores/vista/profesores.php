@@ -1,6 +1,10 @@
 <?php
 require_once '../Modelo/ModeloProfesores.php';
+require '../../usuarios/Modelo/ModeloUsuarios.php';
+
+$usuario = new Usuarios();
 $profesores = new Profesores();
+$usuario->sessionProfesor();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +36,7 @@ $profesores = new Profesores();
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -40,7 +44,7 @@ $profesores = new Profesores();
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
-
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -99,7 +103,8 @@ $profesores = new Profesores();
                         <th>Teléfono </th>
                         <th>opciones</th>
                     </tr-->
-                    <h5><i class="fas fa-list"></i> Profesores</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Profesores</h5>
+                    <hr class="p-0 m-0">
 
                     <tr>
                         <?php
@@ -110,22 +115,22 @@ $profesores = new Profesores();
                             foreach ($Profesores as $Profesores) {
                         ?>
 
-                        <td colspan="6">
+                                <td colspan="6">
 
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div><b class="text-muted">Id:</b> <?php echo $Profesores['cc_profesor'] ?></div>
-                                <div>
-                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Profesores['cc_profesor'] ?>' id='btn-editar-profesor'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                </div>
-                            </div> 
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div><b class="text-muted">Id:</b> <?php echo $Profesores['cc_profesor'] ?></div>
+                                        <div>
+                                            <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Profesores['cc_profesor'] ?>' id='btn-editar-profesor'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                        </div>
+                                    </div>
 
-                        <b class="text-muted"> Nombre:</b><span class="text-primary"> <?php echo strtoupper($Profesores['nombre']) ?></span><br>
-                        <span class="text-muted"><b>Titulo: </b><?php echo $Profesores['titulo'] ?><br></span>
-                        <span class="text-muted"><b>Correo: </b><?php echo $Profesores['email'] ?><br></span>
-                        <span class="text-muted"><b>Teléfono: </b><?php echo $Profesores['telefono'] ?><br></span>
+                                    <b class="text-muted"> Nombre:</b><span class="text-primary"> <?php echo strtoupper($Profesores['nombre']) ?></span><br>
+                                    <span class="text-muted"><b>Titulo: </b><?php echo $Profesores['titulo'] ?><br></span>
+                                    <span class="text-muted"><b>Correo: </b><?php echo $Profesores['email'] ?><br></span>
+                                    <span class="text-muted"><b>Teléfono: </b><?php echo $Profesores['telefono'] ?><br></span>
 
-                        <hr class="p-0 m-0  mt-2">   
-                        </td>
+                                    <hr class="p-0 m-0  mt-2">
+                                </td>
                     </tr>
             <?php }
                         } ?>

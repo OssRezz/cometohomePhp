@@ -1,9 +1,12 @@
 <?php
 require '../Modelo/ModeloEventos.php';
 $eventos = new Eventos();
+require '../../usuarios/Modelo/ModeloUsuarios.php';
 
+$usuario = new Usuarios();
 $date = date('Y-m-d');
 $Tiempo = date("H:i", strtotime('time_d'));
+$usuario->sessionAdmin();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +35,7 @@ $Tiempo = date("H:i", strtotime('time_d'));
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -40,6 +43,7 @@ $Tiempo = date("H:i", strtotime('time_d'));
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
+            <h5><?php echo $usuario->getUsuario() ?></h5>
 
         </div>
 
@@ -111,7 +115,7 @@ $Tiempo = date("H:i", strtotime('time_d'));
                                 <td>
                                     <div class="d-flex justify-content-between mb-2">
                                         <div class="text-muted" style="font-size: 14px;"><b>Desde</b> <?php echo $Eventos['horainicio'] ?>Hrs
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
                                             <span class="text-muted"><b>hasta </b><?php echo $Eventos['horafin'] ?>Hrs</span>
                                         </div>
                                         <div>

@@ -1,7 +1,11 @@
 <?php
 require '../Modelo/ModeloSedes.php';
-
+require '../../usuarios/Modelo/ModeloUsuarios.php';
+$usuario = new Usuarios();
 $sedes = new Sedes();
+
+$usuario->sessionAdmin();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +37,7 @@ $sedes = new Sedes();
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -42,8 +46,8 @@ $sedes = new Sedes();
             </div>
 
 
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
-
 
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
@@ -82,13 +86,14 @@ $sedes = new Sedes();
 
             </div>
 
-        
 
-            <div class="card rounded-0 border-0 mx-4"   style="width: 26rem;">
+
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
 
-                    <h5><i class="fas fa-list"></i> Lista de Sedes</h5><hr class="p-0 m-0">
-                    
+                    <h5><i class="fas fa-list"></i> Lista de Sedes</h5>
+                    <hr class="p-0 m-0">
+
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -100,22 +105,22 @@ $sedes = new Sedes();
 
 
 
-                        <td colspan="6">
+                                <td colspan="6">
 
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div>ID<?php echo $Sedes['id_sede'] ?></div>
-                                <div>
-                                    <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Sedes['id_sede'] ?>' id='btn-editar-sede'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                    <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Sedes['id_sede'] ?>"' id='btn-borrar-sede'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
-                                </div>
-                            </div> 
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div>ID<?php echo $Sedes['id_sede'] ?></div>
+                                        <div>
+                                            <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Sedes['id_sede'] ?>' id='btn-editar-sede'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
+                                            <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Sedes['id_sede'] ?>"' id='btn-borrar-sede'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
+                                        </div>
+                                    </div>
 
-                            <span class="text-primary"><?php echo strtoupper($Sedes['nombre']) ?></span><br>
-                            <span class="text-muted"><b>Dirección: </b><?php echo $Sedes['direccion'] ?><br></span>
-                            <span class="text-muted"><b>Teléfono: </b><?php echo $Sedes['telefono'] ?> &nbsp;&nbsp;&nbsp;&nbsp;<b>Aula: </b><?php echo $Sedes['aula'] ?></span>
+                                    <span class="text-primary"><?php echo strtoupper($Sedes['nombre']) ?></span><br>
+                                    <span class="text-muted"><b>Dirección: </b><?php echo $Sedes['direccion'] ?><br></span>
+                                    <span class="text-muted"><b>Teléfono: </b><?php echo $Sedes['telefono'] ?> &nbsp;&nbsp;&nbsp;&nbsp;<b>Aula: </b><?php echo $Sedes['aula'] ?></span>
 
-                            <hr class="p-0 m-0  mt-2">    
-                        </td>
+                                    <hr class="p-0 m-0  mt-2">
+                                </td>
 
 
                     </tr>

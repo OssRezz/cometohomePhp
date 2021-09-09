@@ -1,10 +1,13 @@
 <?php
 require "../Modelo/ModeloAsisestudiante.php";
 require "../../clases/Modelo/ModeloClases.php";
+require '../../usuarios/Modelo/ModeloUsuarios.php';
 
+$usuario = new Usuarios();
 $asisestudiante = new Asisestudiante();
 $clases = new Clases();
 $date = date('Y-m-d');
+$usuario->sessionProfesor();
 
 
 ?>
@@ -36,7 +39,7 @@ $date = date('Y-m-d');
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -44,7 +47,7 @@ $date = date('Y-m-d');
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
-
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -112,7 +115,7 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0 mx-4"style="width: 26rem;">
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
                 <table class='table table-hover table-sm table-responsive border-0 table-light' style="cursor: pointer;">
                     <!--tr class="table-active">
                         <th>Cédula </th>
@@ -123,7 +126,8 @@ $date = date('Y-m-d');
                         <th>Fecha</th>
                     </tr-->
 
-                    <h5><i class="fas fa-list"></i> Lista de asistencia de Alumnos</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Lista de asistencia de Alumnos</h5>
+                    <hr class="p-0 m-0">
 
 
                     <tr>
@@ -134,29 +138,29 @@ $date = date('Y-m-d');
                         if ($Asisestudiante != null) {
                             foreach ($Asisestudiante as $Asisestudiante) {
                         ?>
-                        <td><?php echo $Asisestudiante['cc_estudiante'] ?></td>
-                        <td><?php echo $Asisestudiante['nombre'] ?></td>
-                        <td><?php echo $Asisestudiante['grupo'] ?></td>
-                        <td><?php echo $Asisestudiante['numeroclases'] ?></td>
-                        <td><?php echo $Asisestudiante['asistencia'] ?></td>
-                        <td><?php echo $Asisestudiante['fecha'] ?></td>
+                                <td><?php echo $Asisestudiante['cc_estudiante'] ?></td>
+                                <td><?php echo $Asisestudiante['nombre'] ?></td>
+                                <td><?php echo $Asisestudiante['grupo'] ?></td>
+                                <td><?php echo $Asisestudiante['numeroclases'] ?></td>
+                                <td><?php echo $Asisestudiante['asistencia'] ?></td>
+                                <td><?php echo $Asisestudiante['fecha'] ?></td>
 
 
                     </tr>
-            <?php }
-                        }else{?>
-                         <span><i>No hay asistencias registradas actualmente.</i></span>   
+                <?php }
+                        } else { ?>
+                <span><i>No hay asistencias registradas actualmente.</i></span>
 
-                        <?php } ?>
+            <?php } ?>
                 </table>
 
-                <?php 
+                <?php
                 #Pagination
                 if ($Asisestudiante != null) { ?>
 
-                <div class="col d-flex justify-content-center" id="paginacion"></div>
+                    <div class="col d-flex justify-content-center" id="paginacion"></div>
 
-                <?php } ?>                
+                <?php } ?>
             </div>
 
         </div>

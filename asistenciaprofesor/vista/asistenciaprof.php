@@ -1,11 +1,13 @@
 <?php
 require "../Modelo/ModeloAsisprofesor.php";
 require "../../clases/Modelo/ModeloClases.php";
+require '../../usuarios/Modelo/ModeloUsuarios.php';
 
+$usuario = new Usuarios();
 $asisprofesor = new Asisprofesor();
 $clases = new Clases();
 $date = date('Y-m-d');
-
+$usuario->sessionProfesor();
 
 ?>
 
@@ -36,7 +38,7 @@ $date = date('Y-m-d');
             </div>
 
             <div class="col-12 d-flex justify-content-end align-items-end px-0">
-                <button class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
+                <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
             <!--logo-->
@@ -44,7 +46,7 @@ $date = date('Y-m-d');
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
 
-
+            <h5><?php echo $usuario->getUsuario() ?></h5>
         </div>
 
 
@@ -115,10 +117,11 @@ $date = date('Y-m-d');
                 </div>
             </div>
 
-            <div class="card rounded-0 border-0 mx-4"  style="width: 26rem;">
+            <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
                 <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
 
-                    <h5><i class="fas fa-list"></i> Lista de Asistencia de profesores</h5><hr class="p-0 m-0">
+                    <h5><i class="fas fa-list"></i> Lista de Asistencia de profesores</h5>
+                    <hr class="p-0 m-0">
                     <tr>
                         <?php
                         $paginationStart = ($pagina - 1) * $limit;
@@ -128,20 +131,20 @@ $date = date('Y-m-d');
                             foreach ($Asisprofesor as $Asisprofesor) {
                         ?>
 
-                        <td colspan="6">
+                                <td colspan="6">
 
-                            <div class="d-flex justify-content-between mb-2">  
-                                <div class="text-muted"><b>Id:</b> <?php echo $Asisprofesor['cc_profesor'] ?></div>
-                                <div>
-                                  <span class="text-muted"><b>Fecha: </b><?php echo $Asisprofesor['fecha'] ?></span> 
-                                </div>
-                            </div> 
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="text-muted"><b>Id:</b> <?php echo $Asisprofesor['cc_profesor'] ?></div>
+                                        <div>
+                                            <span class="text-muted"><b>Fecha: </b><?php echo $Asisprofesor['fecha'] ?></span>
+                                        </div>
+                                    </div>
 
-                         <span class="text-primary"><?php echo strtoupper($Asisprofesor['nombre']) ?></span><br>   
-                        <span class="text-muted"><b>Grupo: </b><?php echo $Asisprofesor['grupo'] ?><br></span>
-                        <span class="text-muted"><b>Número de clases: </b><?php echo $Asisprofesor['numeroclases'] ?><br></span>
-                        <b class="text-muted">Asistencias: </b><span class="text-muted"> <?php echo $Asisprofesor['asistencia'] ?><br></span>
-                        </td>
+                                    <span class="text-primary"><?php echo strtoupper($Asisprofesor['nombre']) ?></span><br>
+                                    <span class="text-muted"><b>Grupo: </b><?php echo $Asisprofesor['grupo'] ?><br></span>
+                                    <span class="text-muted"><b>Número de clases: </b><?php echo $Asisprofesor['numeroclases'] ?><br></span>
+                                    <b class="text-muted">Asistencias: </b><span class="text-muted"> <?php echo $Asisprofesor['asistencia'] ?><br></span>
+                                </td>
 
                     </tr>
             <?php }

@@ -19,12 +19,22 @@ class Login extends Conexion
             $consulta = $statement->fetch();
             $_SESSION['nombre'] = $consulta["nombre"];
             $_SESSION['perfil'] = $consulta["id_perfil"];
+            $_SESSION['id'] = $consulta["codigo"];
+            $_SESSION['correo'] = $consulta["email"];
             return true;
         } else {
             return false;
         }
     }
-
+    
+    /**
+     * existeUsuario
+     *
+     *Si el usuario existe en la base de datos, va a retornar un arreglo
+     *con toda la informacion.
+     *
+     * @param  mixed $cedula
+     */
     public function existeUsuario($cedula)
     {
         $existeUsuario = null;

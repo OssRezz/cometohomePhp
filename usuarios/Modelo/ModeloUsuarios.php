@@ -45,6 +45,15 @@ class Usuarios extends Conexion
     {
         return $_SESSION['perfil'];
     }
+    public function getId()
+    {
+        return $_SESSION['id'];
+    }
+    public function getCorreo()
+    {
+        return $_SESSION['correo'];
+    }
+
 
     public function listarUsuarios($paginationStart, $limit)
     {

@@ -25,8 +25,8 @@ if (empty($Email_uno) != 1 && empty($Email_dos)  != 1  && empty($id)  != 1) {
             $modal->modalInformativa("Actualizar correo", "<div class='text-danger'Correo no valido.</div>");
         }
     } else {
-        $modal->modalInformativa("Actualizar correo", "<div class='text-primary'>Los correos deben coincidir.</div>");
+        $modal->modalInformativa("Actualizar correo", "<div class='text-info'>Los correos deben coincidir.</div>");
     }
 } else {
-    $modal->modalInformativa("Actualizar correo", "<div class='text-primary'>Todos los campos son requeridos.</div>");
+    $modal->modalInformativa("Actualizar correo", "<div class='text-danger'>Todos los campos son requeridos.</div>");
 }

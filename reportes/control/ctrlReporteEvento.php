@@ -28,13 +28,14 @@ $reporteClases = new Reportes();
 $spreadsheet = new Spreadsheet();
 $reporte = $spreadsheet->getActiveSheet();
 
-$reporte->setTitle("Asistencia de alumnos");
+$reporte->setTitle('Reporte de eventos');
 
 
 //Posicion del titulo
-$reporte->setCellValue('A1', 'Lista de asistencia de alumnos');
-$reporte->setCellValue('D1', 'Fecha de reporte: ');
+$reporte->setCellValue('A1', 'Reporte de eventos');
+$reporte->setCellValue('E1', 'Fecha de reporte: ');
 $reporte->setCellValue('F1',  $date);
+
 
 
 
@@ -45,21 +46,27 @@ $spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Al
 $spreadsheet->getActiveSheet()->getRowDimension("1")->setRowHeight(30);
 
 //Campos de la cabecera
-$reporte->setCellValue('A2', 'Clase');
-$reporte->setCellValue('B2', 'Identificación');
-$reporte->setCellValue('C2', 'Estudiante');
-$reporte->setCellValue('D2', 'N.º De clases');
-$reporte->setCellValue('E2', 'Asistencias');
-$reporte->setCellValue('F2', 'Ultimo registro');
-
+$reporte->setCellValue('A2', 'ID');
+$reporte->setCellValue('B2', 'nombre evento');
+$reporte->setCellValue('C2', 'Descripcion');
+$reporte->setCellValue('D2', 'Fecha');
+$reporte->setCellValue('E2', 'Hora inicio');
+$reporte->setCellValue('F2', 'Hora fin');
 
 //Tamaño de las columnas 
-$spreadsheet->getActiveSheet()->getColumnDimension("A")->setWidth(35);
-$spreadsheet->getActiveSheet()->getColumnDimension("B")->setWidth(20);
-$spreadsheet->getActiveSheet()->getColumnDimension("C")->setWidth(35);
-$spreadsheet->getActiveSheet()->getColumnDimension("D")->setWidth(20);
-$spreadsheet->getActiveSheet()->getColumnDimension("E")->setWidth(15);
-$spreadsheet->getActiveSheet()->getColumnDimension("F")->setWidth(20);
+$spreadsheet->getActiveSheet()->getColumnDimension("A")->setWidth(10);
+$spreadsheet->getActiveSheet()->getColumnDimension("B")->setWidth(27);
+$spreadsheet->getActiveSheet()->getColumnDimension("C")->setWidth(30);
+$spreadsheet->getActiveSheet()->getColumnDimension("D")->setWidth(15);
+$spreadsheet->getActiveSheet()->getColumnDimension("E")->setWidth(25);
+$spreadsheet->getActiveSheet()->getColumnDimension("F")->setWidth(15);
+
+$spreadsheet->getActiveSheet()->getStyle("A")->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle("B")->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle("C")->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle("D")->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle("E")->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle("F")->getAlignment()->setWrapText(true);
 
 
 //Estilo negrilla, tamaño de letra, y fila
@@ -74,17 +81,17 @@ $spreadsheet->getActiveSheet()->getStyle('A2:F2')->applyFromArray($tableStyle);
 
 
 $count = 3;
-$Reporte = $reporteClases->listaAsistenciaAlumnos();
+$Reporte = $reporteClases->reporteEvento();
 
 
 if ($Reporte != null) {
     foreach ($Reporte as $rows) {
-        $reporte->setCellValue('A' . $count, $rows['grupo']);
-        $reporte->setCellValue('B' . $count, $rows['cc_estudiante']);
-        $reporte->setCellValue('C' . $count, $rows['nombre']);
-        $reporte->setCellValue('D' . $count, $rows['numeroclases']);
-        $reporte->setCellValue('E' . $count, $rows['asistencia']);
-        $reporte->setCellValue('F' . $count, $rows['fecha']);
+        $reporte->setCellValue('A' . $count, $rows['id_evento']);
+        $reporte->setCellValue('B' . $count, $rows['nombre']);
+        $reporte->setCellValue('C' . $count, $rows['descripcion']);
+        $reporte->setCellValue('D' . $count, $rows['fecha']);
+        $reporte->setCellValue('E' . $count, $rows['horainicio']);
+        $reporte->setCellValue('F' . $count, $rows['horafin']);
         $count++;
     }
 } else {
@@ -101,7 +108,7 @@ $spreadsheet->getActiveSheet()->setAutoFilter("A" . $firstRow . ":F" . $lasRow);
 
 
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="asistencia-Alumnos-' . $date . '.xls"');
+header('Content-Disposition: attachment;filename="Reporte-Eventos-' . $date . '.xls"');
 header('Cache-Control: max-age=0');
 
 $writer = IOFactory::createWriter($spreadsheet, 'Xls');

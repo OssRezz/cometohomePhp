@@ -99,13 +99,7 @@ $usuario->sessionAdmin();
             <div class="card card-image-width  rounded-0 ">
                 <ul class="list-group  list-group-flush">
 
-                    <li class="list-group-item d-flex justify-content-between">
-                        Lista de clases activas
-                        <a href="../control/ctrlListaClasesActivas.php" class="btn border-0 rounded-0 ">
-                            <i class="fas fa-download text-success">
-                            </i>
-                        </a>
-                    </li>
+
 
                     <li class="list-group-item d-flex justify-content-between">
                         Reporte de matriculas
@@ -116,24 +110,52 @@ $usuario->sessionAdmin();
                     </li>
 
                     <li class="list-group-item d-flex justify-content-between">
-                        Lista de estudiantes
-                        <a href="../control/ctrlListaDeAlumnos.php" class="btn border-0 rounded-0 ">
+                        № de Inscripciones
+                        <a href="../control/ctrlInscripcionesPrograma.php" class="btn border-0 rounded-0 ">
                             <i class="fas fa-download text-success">
                             </i>
                         </a>
                     </li>
+
                     <li class="list-group-item d-flex justify-content-between">
-                        Lista de profesores
-                        <a href="../control/ctrlListaDeProfesores.php" class="btn border-0 rounded-0 ">
+                        Reporte de poblaciones
+                        <a href="../control/ctrlReportePoblaciones.php" class="btn border-0 rounded-0 ">
                             <i class="fas fa-download text-success">
                             </i>
                         </a>
                     </li>
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        Reporte de generos
+                        <a href="../control/ctrlReporteGeneros.php" class="btn border-0 rounded-0 ">
+                            <i class="fas fa-download text-success">
+                            </i>
+                        </a>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        Reporte de eventos
+                        <a href="../control/ctrlReporteEvento.php" class="btn border-0 rounded-0 ">
+                            <i class="fas fa-download text-success">
+                            </i>
+                        </a>
+                    </li>
+
+
+
                 </ul>
             </div>
 
             <div class="card card-image-width  rounded-0">
                 <ul class="list-group  list-group-flush">
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        Lista de clases activas
+                        <a href="../control/ctrlListaClasesActivas.php" class="btn border-0 rounded-0 ">
+                            <i class="fas fa-download text-success">
+                            </i>
+                        </a>
+                    </li>
 
                     <li class="list-group-item d-flex justify-content-between">
                         Asistencia de alumnos
@@ -151,10 +173,28 @@ $usuario->sessionAdmin();
                         </a>
                     </li>
 
+                    <li class="list-group-item d-flex justify-content-between">
+                        Lista de estudiantes
+                        <a href="../control/ctrlListaDeAlumnos.php" class="btn border-0 rounded-0 ">
+                            <i class="fas fa-download text-success">
+                            </i>
+                        </a>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        Lista de profesores
+                        <a href="../control/ctrlListaDeProfesores.php" class="btn border-0 rounded-0 ">
+                            <i class="fas fa-download text-success">
+                            </i>
+                        </a>
+                    </li>
+
+
+
+
+
                 </ul>
             </div>
-
-
 
         </div>
 

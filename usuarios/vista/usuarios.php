@@ -134,7 +134,7 @@ $usuarios->sessionAdmin();
                                         <div>CODIGO<?php echo $Usuarios['codigo'] ?></div>
                                         <div>
                                             <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Usuarios['codigo'] ?>' id='btn-editar-usuario'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                            <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
+                                            <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar-usuario'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
                                         </div>
                                     </div>
 

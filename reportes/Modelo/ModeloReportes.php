@@ -57,13 +57,13 @@ class Reportes extends Conexion
 
     public function listaProfesores()
     {
-        $listaAlumnos = null;
+        $listaProfesores = null;
         $statement = $this->db->prepare("SELECT * FROM `tbl_profesores` ORDER BY nombre ASC");
         $statement->execute();
         while ($consulta = $statement->fetch()) {
-            $listaAlumnos[] = $consulta;
+            $listaProfesores[] = $consulta;
         }
-        return $listaAlumnos;
+        return $listaProfesores;
     }
 
     public function listaAsistenciaAlumnos()
@@ -94,5 +94,59 @@ class Reportes extends Conexion
             $listaAsistenciaProfesores[] = $consulta;
         }
         return $listaAsistenciaProfesores;
+    }
+
+
+    public function incripcionesPorPrograma()
+    {
+        $incripcionesPorPrograma = null;
+        $statement = $this->db->prepare("SELECT TP.nombre AS 'programa', COUNT(TI.id_programa) 'numInscripciones' FROM `tbl_inscripciones` AS TI
+        INNER JOIN tbl_programas as TP on TP.id_programa=TI.id_programa
+        GROUP BY TI.id_programa
+        ORDER BY (numInscripciones) DESC");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $incripcionesPorPrograma[] = $consulta;
+        }
+        return $incripcionesPorPrograma;
+    }
+
+    public function reporteGenero()
+    {
+        $reporteGenero = null;
+        $statement = $this->db->prepare("SELECT  E.id_genero,TG.genero, count(E.id_genero) as 'cantGenero' FROM `tbl_estudiantes` AS E
+        INNER JOIN tbl_generos AS TG ON TG.id_genero=E.id_genero
+        GROUP BY E.id_genero  
+        ORDER BY cantGenero DESC");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $reporteGenero[] = $consulta;
+        }
+        return $reporteGenero;
+    }
+
+    public function reportePoblaciones()
+    {
+        $reportePoblaciones = null;
+        $statement = $this->db->prepare("SELECT  E.id_poblacion,TP.poblacion, count(E.id_poblacion) as 'cantPoblacion' FROM `tbl_estudiantes` AS E
+        INNER JOIN tbl_poblaciones AS Tp ON TP.id_poblacion=E.id_poblacion
+        GROUP BY E.id_poblacion 
+        ORDER BY cantPoblacion DESC");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $reportePoblaciones[] = $consulta;
+        }
+        return $reportePoblaciones;
+    }
+
+    public function reporteEvento()
+    {
+        $reporteEvento = null;
+        $statement = $this->db->prepare("SELECT * FROM `tbl_eventos` order BY fecha DESC");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $reporteEvento[] = $consulta;
+        }
+        return $reporteEvento;
     }
 }

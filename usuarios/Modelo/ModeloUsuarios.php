@@ -144,4 +144,15 @@ class Usuarios extends Conexion
             return false;
         }
     }
+
+    public function eliminarUsuario($codigo)
+    {
+        $statement = $this->db->prepare("DELETE FROM `tbl_usuarios` WHERE codigo= :codigo");
+        $statement->bindParam(':codigo', $codigo);
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -78,40 +78,29 @@ $(document).ready(() => {
                 $('#respuesta').html(responseText);
             });
 
+        } else if (e.target.id === "btn-borrar-usuario") {
+
+            const id_usuario = e.target.value;
+            $.post('../control/ctrlModalEliminarUsuario.php', {
+                id_usuario: id_usuario
+            }, function (responseText) {
+                $('#respuesta').html(responseText);
+            });
+
+        } else if (e.target.id === "btn-eliminar-usuario") {
+
+            const id_usuario = e.target.value;
+            $.post('../control/ctrlEliminarUsuario.php', {
+                id_usuario: id_usuario
+            }, function (responseText) {
+                $('#respuesta').html(responseText);
+            });
+
         }
+
     });
 
 
-    // //CRUD
-    // $(document).click(function (e) {
-
-    //     const accion = e.target.id;
-
-    //     if (accion === "editar") {
-    //         const codigo = e.target.value;
-    //         $.post('EditarUsuariosServlet', {
-    //             accion: accion,
-    //             codigo: codigo
-    //         }, function (responseText) {
-    //             $('#respuesta').html(responseText);
-    //         });
-    //     } else if (accion === "borrar") {
-    //         const codigo = e.target.value;
-    //         $.post('ModalEliminarServlet', {
-    //             codigo: codigo
-    //         }, function (responseText) {
-    //             $('#respuesta').html(responseText);
-    //         });
-    //     } else if (accion === "eliminarUsuario") {
-    //         const codigo = e.target.value;
-    //         $.post('EliminarUsuarioServlet', {
-    //             codigo: codigo
-    //         }, function (responseText) {
-    //             $('#respuesta').html(responseText);
-    //         });
-
-    //     }
-    // });
 
 
 });

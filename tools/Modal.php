@@ -20,7 +20,7 @@ class Modal
         echo $contenidoModal;
         echo "      </div>";
         echo "      <div class='modal-footer'>";
-        echo "        <button type='button'  data-dismiss='modal' class='btn btn-primary' id='aceptar'>Aceptar</button>";
+        echo "        <button type='button'  data-dismiss='modal' class='btn  btn-primary rounded-0' id='aceptar'>Aceptar</button>";
         echo "      </div>";
         echo "    </div>";
         echo "  </div>";
@@ -45,8 +45,8 @@ class Modal
         echo "       <li>Si ya estas registrado presiona el botón <span class='font-weight-bolder font-italic text-muted'>inscribirse al programa</span> .</li>";
         echo "      </div>";
         echo "      <div class='modal-footer d-flex justify-content-between'>";
-        echo "        <a type='button' class='btn text-primary' id='btn-registrarme'>Crear una cuenta</a>";
-        echo "        <button type='button' class='btn btn-success'  value='$programa' id='btn-inscripcion'>Inscribirse al programa</button>";
+        echo "        <a type='button' class='btn rounded-0  text-primary' id='btn-registrarme'>Crear una cuenta</a>";
+        echo "        <button type='button' class='btn  btn-success rounded-0'  value='$programa' id='btn-inscripcion'>Inscribirse al programa</button>";
         echo "      </div>";
         echo "    </div>";
         echo "  </div>";
@@ -121,7 +121,7 @@ class Modal
         echo                    "</div>";
         echo             "</div>";
         echo             "<div class='form-group d-flex justify-content-center'>";
-        echo               "<a href='../../reportes/vista/indexAdmin.php' class='btn  btn-success btn-lg px-5' id='continuar'>Continuar</a>";
+        echo               "<a href='../../reportes/vista/indexAdmin.php' class='btn  rounded-0  btn-success btn-lg px-5' id='continuar'>Continuar</a>";
         echo             "</div>";
 
         echo "      </div>";

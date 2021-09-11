@@ -25,6 +25,12 @@ textarea {
   resize: none;
 }
 
+/*Tarjeta de perfil*/
+.bg-card-perfil{
+  color: #1ac44d;
+  background: rgb(23,78,40);
+background: linear-gradient(90deg, rgba(23,78,40,1) 0%, rgba(35,131,64,1) 90%);
+}
 
 /*
 Comienza spinners

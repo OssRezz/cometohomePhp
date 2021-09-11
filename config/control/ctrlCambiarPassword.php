@@ -32,5 +32,5 @@ if (empty($Password_uno) != 1 && empty($Password_dos)  != 1  && empty($id)  != 1
     }
     
 } else {
-    $modal->modalInformativa("Actualizar contraseña", "<div class='text-primary'>Todos los campos son requeridos.</div>");
+    $modal->modalInformativa("Actualizar contraseña", "<div class='text-danger'>Todos los campos son requeridos.</div>");
 }

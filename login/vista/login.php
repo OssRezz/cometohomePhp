@@ -19,21 +19,16 @@ $date = date('Y-m-d');
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<body>
+<body class=" bgcc ">
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" >
 
-        <div class="row bgcc t pt-0 pl-5 pr-0">
-
-
-
+        <div class="row bgcc t pt-0 pl-md-2 pr-0 pb-3" style="margin-top: 38px;">
             <!--logo-->
             <div class="col d-flex align-items-center pb-4">
                 <img src="../../images/logo.gif" height="110" alt="">
             </div>
-
-
         </div>
 
         <!-- 
@@ -44,8 +39,8 @@ $date = date('Y-m-d');
         <!---->
         <div class="row d-flex justify-content-center py-3">
 
-            <div class="card mx-3 rounded-0 mb-4" style="width: 25rem;">
-                <div class="card-header">
+            <div class="card mx-3 rounded-0 mb-4" style="width: 21rem;">
+                <div class="card-header text-center bg-white border-0 mb-2">
                     <h5><i class="fas fa-sign-in-alt"></i> Iniciar sesión</h5>
                 </div>
 
@@ -60,7 +55,7 @@ $date = date('Y-m-d');
                     </div>
 
                     <div class="form-group">
-                        <button type="button" id="btn-inciar-sesion" class="btn btn-outline-primary btn-block rounded-0">Iniciar sesión</button>
+                        <button type="button" id="btn-inciar-sesion" class="btn btn-outline-success btn-block rounded-0">Ingresar</button>
                     </div>
                     <div id="respuesta"></div>
                 </div>

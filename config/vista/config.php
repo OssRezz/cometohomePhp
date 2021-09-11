@@ -85,6 +85,17 @@ $usuario = new Usuarios();
                     </div>
 
                     <button type="button" class="btn btn-outline-dark btn-block  rounded-0" id="btn-cambiar-password">Guardar</button>
+
+                    <div id="spinner">
+                        <div class="sk-chase">
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -101,7 +112,7 @@ $usuario = new Usuarios();
                     <div class="card-text mb-4">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque adipisci ut hic delectus exercitationem nobis asperiores corporis necessitatibus, perspiciatis vel fuga, iusto ullam earum officia ex officiis, repellat natus et?
                     </div>
-                    <a href="../control/ctrlBackUp.php"  class="btn btn-outline-dark btn-block  rounded-0" id="btn-backup" target="_blank">Realizar Backup</a>
+                    <a href="../control/ctrlBackUp.php" class="btn btn-outline-dark btn-block  rounded-0" id="btn-backup" target="_blank">Realizar Backup</a>
                 </div>
             </div>
 

@@ -58,6 +58,18 @@ $(document).ready(() => {
         }
     });
 
+    $(document).click(function (e) {
+        const accion = e.target.id;
+        if (accion === "btn-buscar-matricula") {
+            cc_estudiante = $('#inputSearch').val();
+            $.post('../control/ctrlBuscarInscripcion.php', {
+                cc_estudiante: cc_estudiante
+            }, function (responseText) {
+                $('#respuesta').html(responseText);
+            });
+        }
+    });
+
 
 });
 

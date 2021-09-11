@@ -58,10 +58,11 @@ $(document).ready(function () {
     });
 
     $(document).click((e) => {
+        let cc_estudiante;
 
         if (e.target.id === "btn-editar-estudiante") {
 
-            const cc_estudiante = e.target.value;
+            cc_estudiante = e.target.value;
             $.post('../control/ctrlModalEditarEstudiante.php', {
                 cc_estudiante: cc_estudiante
             }, function (responseText) {
@@ -70,7 +71,7 @@ $(document).ready(function () {
 
         } else if (e.target.id === "btn-actualizar-estudiante") {
 
-            const cc_estudiante = $('#cc_estudiante').val();
+            cc_estudiante = $('#cc_estudiante').val();
             const identificacion = $('#identificacion').val();
             const nombre = $('#nombre').val();
             const email = $('#email').val();
@@ -93,6 +94,15 @@ $(document).ready(function () {
                 selectpoblacion: selectpoblacion,
                 selectgenero: selectgenero
             }, (responseText) => {
+                $('#respuesta').html(responseText);
+            });
+
+        } else if (e.target.id === "btn-buscar-estudiante") {
+
+            cc_estudiante = $('#inputSearch').val();
+            $.post('../control/ctrlBuscarEstudiante.php', {
+                cc_estudiante: cc_estudiante
+            }, function (responseText) {
                 $('#respuesta').html(responseText);
             });
 

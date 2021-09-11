@@ -38,6 +38,33 @@ class Estudiantes extends Conexion
         return $mostrarEstudiantesById;
     }
 
+    /**
+     * 
+     * buscarEstudiantes
+     *
+     *Esta funcion recibe una variable.
+     *Puede ser un string o numero.
+     *devuelve un arreglo.
+     * 
+     * @param  mixed $cc_estudiante
+     * @return array
+     */
+    public function buscarEstudiantes($cc_estudiante)
+    {
+        $buscarEstudiantes = null;
+        $statement = $this->db->prepare("SELECT TE.*,TG.genero, TP.poblacion FROM `tbl_estudiantes` as TE
+        INNER JOIN tbl_generos AS TG ON TG.id_genero=TE.id_genero
+        INNER JOIN tbl_poblaciones AS TP ON TP.id_poblacion=TE.id_poblacion
+       	WHERE TE.cc_estudiante LIKE '%' :cc_estudiante '%' OR TE.nombre LIKE '%' :cc_estudiante '%'
+		ORDER BY TE.nombre ASC LIMIT 3;");
+        $statement->bindParam(':cc_estudiante', $cc_estudiante);
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $buscarEstudiantes[] = $consulta;
+        }
+        return $buscarEstudiantes;
+    }
+
     public function contadorEstudiantes()
     {
         $contadorEstudiantes = null;

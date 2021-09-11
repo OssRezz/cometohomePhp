@@ -50,6 +50,33 @@ class Matriculas extends Conexion
         return $MostrarInscripcionesById;
     }
 
+    /**
+     * buscarInscripciones
+     * 
+     *Esta funcion recibe una variable.
+     *Puede ser un string o numero.
+     *devuelve un arreglo.
+     *
+     * @param  mixed $cc_estudiante
+     * @return array
+     */
+    public function buscarInscripciones($cc_estudiante)
+    {
+        $buscarInscripciones = null;
+        $statement = $this->db->prepare("SELECT TI.*, TP.nombre AS 'programa',TE.telefono,TE.nombre as 'estudiante', case when TM.id_inscripcion is null then 0 else 1 end AS 'matriculado' FROM `tbl_inscripciones` AS TI
+        INNER JOIN tbl_programas as TP on TP.id_programa=TI.id_programa
+        INNER JOIN tbl_estudiantes AS TE ON TE.cc_estudiante=TI.cc_estudiante
+        LEFT JOIN tbl_matriculas AS TM ON TM.id_inscripcion=TI.id_inscripcion
+       	WHERE TI.cc_estudiante LIKE '%' :cc_estudiante '%' OR TE.nombre LIKE '%' :cc_estudiante '%'
+		ORDER BY TE.nombre ASC LIMIT 3;");
+        $statement->bindParam(':cc_estudiante', $cc_estudiante);
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $buscarInscripciones[] = $consulta;
+        }
+        return $buscarInscripciones;
+    }
+
     public function listarClases()
     {
         $listarClases = null;

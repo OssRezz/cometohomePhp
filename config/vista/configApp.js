@@ -17,7 +17,12 @@ $(document).ready(function () {
     });
 
     $("#btn-cambiar-password").click(function () {
-        $(this).prop('disabled', true);
+        // $(this).prop('disabled', true);
+
+        $(this).hide();
+        const spinner = document.querySelector('#spinner');
+        spinner.style.display = 'flex';
+
         const nuevoPassword = $('#nuevoPassword').val();
         const repetirPassword = $('#repetirPassword').val();
         const codigo = $('#codigo').val();
@@ -32,7 +37,10 @@ $(document).ready(function () {
             nombre: nombre
         }, function (responseText) {
             $('#respuesta').html(responseText);
-            $("#btn-cambiar-password").prop('disabled', false);
+            // $("#btn-cambiar-password").prop('disabled', false);
+
+            $("#btn-cambiar-password").show();
+            spinner.style.display = 'none';
         });
     });
 

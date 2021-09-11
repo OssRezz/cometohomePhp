@@ -60,9 +60,9 @@ $usuario->sessionAdmin();
                 <div class="card-body px-0">
 
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
+                        <input type="text" class="form-control" id="inputSearch" placeholder="Ingrese id o nombre del alumno" aria-describedby="button-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button" id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+                            <button class="btn btn-secondary" type="button" id="btn-buscar-matricula"><i class="fas fa-search" style='pointer-events: none;'></i> Buscar</button>
                         </div>
                     </div>
 

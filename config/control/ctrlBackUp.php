@@ -14,7 +14,7 @@ define("DB_USER", 'root');
 define("DB_PASSWORD", '');
 define("DB_NAME", 'cometohomephp');
 define("DB_HOST", 'localhost:3306');
-define("BACKUP_DIR", 'C:\Users\james\Documents\backup'); // Comment this line to use same script's directory ('.')
+define("BACKUP_DIR", 'C:\backupComeToHome'); // Comment this line to use same script's directory ('.')
 define("TABLES", '*'); // Full backup
 //define("TABLES", 'table1, table2, table3'); // Partial backup
 define('IGNORE_TABLES', array(

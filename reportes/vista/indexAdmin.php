@@ -58,7 +58,6 @@ $usuario->sessionAdmin();
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
         <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top'  id="navbar"></div>
-        </div>
 
         <!--Artes audiovisuales-->
         <div class="row d-flex justify-content-center mt-5 py-3 " id="audiovisuales">

@@ -24,16 +24,12 @@ $usuario = new Usuarios();
 
 
     <div class="container-fluid">
-
-        <div class="row bgcc t pt-0 pl-md-2 pr-0 pb-3">
-
+        <div class="row bgcc t pt-0 pl-5 pr-0">
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 3; ?>"></input>
-                <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
+                <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
             </div>
 
-            <!--botón cerrar-->
-            <div class="col-12 d-flex justify-content-end align-items-end p-0">
+            <div class="col-12 d-flex justify-content-end align-items-end px-0">
                 <button id="btn-logOut" type="button" class="btn btn-danger rounded-0"><i class="fas fa-times"></i> Cerrar Sesión</button>
             </div>
 
@@ -62,7 +58,8 @@ $usuario = new Usuarios();
 
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
-        <div id="navbar"></div>
+        <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top' id="navbar"></div>
+
 
         <!---->
         <div class="row d-flex justify-content-center align-items-start pt-3">
@@ -121,21 +118,26 @@ $usuario = new Usuarios();
 
 
         </div>
+        <?php
+        if ($usuario->getPerfil() === "1") {
+        ?>
+            <div class="row d-flex justify-content-center ">
 
-        <div class="row d-flex justify-content-center ">
+                <div class="card mr-md-4 mb-4 rounded-0" style="width: 23rem;">
+                    <div class="card-body ">
+                        <h5 class="mb-3"><i class="fas fa-database"></i> Backup </h5>
 
-            <div class="card mr-md-4 mb-4 rounded-0" style="width: 23rem;">
-                <div class="card-body ">
-                    <h5 class="mb-3"><i class="fas fa-database"></i> Backup </h5>
-
-                    <div class="card-text mb-4">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque adipisci ut hic delectus exercitationem nobis asperiores corporis necessitatibus, perspiciatis vel fuga, iusto ullam earum officia ex officiis, repellat natus et?
+                        <div class="card-text mb-4">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque adipisci ut hic delectus exercitationem nobis asperiores corporis necessitatibus, perspiciatis vel fuga, iusto ullam earum officia ex officiis, repellat natus et?
+                        </div>
+                        <a href="../control/ctrlBackUp.php" class="btn btn-outline-dark btn-block  rounded-0" id="btn-backup" target="_blank">Realizar Backup</a>
                     </div>
-                    <a href="../control/ctrlBackUp.php" class="btn btn-outline-dark btn-block  rounded-0" id="btn-backup" target="_blank">Realizar Backup</a>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        <?php
+        }
+        ?>
 
     </div>
 

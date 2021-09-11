@@ -32,6 +32,7 @@ $usuarios->sessionAdmin();
             <div id="respuesta">
                 <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
+                <input type="hidden" id="perfilUsuario" value="<?= $usuarios->getPerfil() ?>"></input>
             </div>
 
             <!--botón cerrar-->
@@ -67,7 +68,8 @@ $usuarios->sessionAdmin();
 
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
-        <div id="navbar"></div>
+        <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top' id="navbar"></div>
+
 
         <!---->
         <div class="row d-flex justify-content-center align-items-start py-3">
@@ -154,7 +156,7 @@ $usuarios->sessionAdmin();
                                         <div>CODIGO<?php echo $Usuarios['codigo'] ?></div>
                                         <div>
                                             <button type='button' class='btn btn-sm btn-outline-primary border-0' value='<?php echo $Usuarios['codigo'] ?>' id='btn-editar-usuario'><i class='fas fa-edit' style='pointer-events: none;'></i></button>
-                                            <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
+                                            <button class='btn btn-sm btn-outline-danger border-0' value='<?php echo $Usuarios['codigo'] ?>"' id='btn-borrar-usuario'><i class='fas fa-eraser' style='pointer-events: none;'></i></button>
                                         </div>
                                     </div>
 

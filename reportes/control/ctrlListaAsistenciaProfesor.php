@@ -101,7 +101,7 @@ $spreadsheet->getActiveSheet()->setAutoFilter("A" . $firstRow . ":F" . $lasRow);
 
 
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="asisntecia-Alumnos-' . $date . '.xls"');
+header('Content-Disposition: attachment;filename="asistencia-Profesores-' . $date . '.xls"');
 header('Cache-Control: max-age=0');
 
 $writer = IOFactory::createWriter($spreadsheet, 'Xls');

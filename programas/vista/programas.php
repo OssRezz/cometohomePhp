@@ -37,6 +37,7 @@ $usuario->sessionAdmin();
             <div id="respuesta">
                 <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
+                <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
             </div>
 
             <!--botón cerrar-->
@@ -69,7 +70,7 @@ $usuario->sessionAdmin();
 
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
-        <div id="navbar"></div>
+        <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top' id="navbar"></div>
 
 
         <!---->

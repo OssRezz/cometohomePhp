@@ -1,10 +1,9 @@
 <?php
 
-function navBar()
-{
+$perfil = $_POST['perfil'];
 
-    echo "<!--Barra de navegación-->";
-    echo "<div class='row bg-dark mb-5 d-flex justify-content-center sticky-top'>";
+function adminMenu()
+{
     echo  "                <a href='../../reportes/vista/indexAdmin.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Inicio</a>";
     echo  "                <a href='../../usuarios/vista/usuarios.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Usuarios</a>";
     echo  "                <a href='../../sedes/vista/sedes.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Sedes</a>";
@@ -18,6 +17,7 @@ function navBar()
     echo  "                    </div>";
     echo  "                </div>";
     echo  "                 <a href='../../clases/vista/clases.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Clases</a>";
+    echo  "                <a href='../../eventos/vista/eventos.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Eventos</a>";
     echo  "                <div class='dropdown'>";
     echo  "                    <button class='btn btn-dark dropdown-toggle rounded-0' type='button' id='dropMenuProfesores' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
     echo  "                        Menú profesores";
@@ -27,6 +27,11 @@ function navBar()
     echo  "                        <a class='dropdown-item' href='../../asistenciaprofesor/vista/asistenciaprof.php'>Asist. profesores</a>";
     echo  "                    </div>";
     echo  "                </div>";
+}
+
+function profesorMenu()
+{
+
     echo  "                <div class='dropdown'>";
     echo  "                    <button class='btn btn-dark dropdown-toggle rounded-0' type='button' id='dropMenuAlumnos' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
     echo  "                        Menú alumnos";
@@ -36,9 +41,21 @@ function navBar()
     echo  "                        <a class='dropdown-item' href='../../asistenciaestudiante/vista/asistenciaalumnos.php'>Asist. Alumnos</a>";
     echo  "                    </div>";
     echo  "                </div>";
-    echo  "                <a href='../../eventos/vista/eventos.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Eventos</a>";
-    echo  "                <a href='../../config/vista/config.php' class='border-0 btn btn-w btn-outline-light rounded-0' style='width: 50px;'><i class='fas fa-cog'></i></a>";
-    echo  "</div>";
 }
 
-navBar();
+
+function estudianteMenu()
+{
+    echo  "                <a href='../../config/vista/config.php' class='border-0 btn btn-w btn-outline-light rounded-0' style='width: 50px;'><i class='fas fa-cog'></i></a>";
+}
+
+
+switch ($perfil) {
+    case 1:
+        adminMenu();
+    case 2:
+        profesorMenu();
+    case 3:
+        estudianteMenu();
+        break;
+}

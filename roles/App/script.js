@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
-    $.post('../../roles/control/ctrlNavBar.php', {}, function (responseText) {
+    const perfil = $('#perfilUsuario').val();
+    $.post('../../roles/control/ctrlNavBar.php', {
+        perfil: perfil
+    }, function (responseText) {
         $('#navbar').html(responseText);
     });
 

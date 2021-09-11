@@ -42,14 +42,17 @@ $usuario->sessionAdmin();
 
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
-        <div id="navbar"></div>
+        <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top'  id="navbar"></div>
+        </div>
 
         <!--Artes audiovisuales-->
         <div class="row d-flex justify-content-center mt-5 py-3 " id="audiovisuales">
             <h5 class=" text-center py-2 px-5 rounded"><i class="fas fa-flag"></i> Reportes</h5>
         </div>
         <div class="row d-flex justify-content-center py-3">
-            <div id="respuesta"></div>
+            <div id="respuesta">
+            <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
+            </div>
 
             <div class="card mx-3 mb-3 card-image-width rounded-0">
                 <div class="card-body">

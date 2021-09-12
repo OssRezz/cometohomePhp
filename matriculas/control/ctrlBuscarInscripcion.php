@@ -44,16 +44,14 @@ if (empty($cc_estudiante) != 1) {
             echo                                 "</div>";
             echo                                 "</div>";
 
-            echo                                 " <span class='text-muted'><b>Id:</b> <?php echo $cc_estudiante</span><br>";
+            echo                                 " <span class='text-muted'><b>Id:</b> $cc_estudiante</span><br>";
             echo                                 "<b class='text-muted'>Estudiante:</b><span class='text-primary' style='font-size: 14px;'> $estudiante</span><br>";
-            echo                                 "<span class='text-muted'><b>Teléfono:</b> $telefono </span><br>";
+            echo                                 "<span class='text-muted'><b>Teléfono:</b> $telefono</span><br>";
             echo                                 "<span class='text-muted'><b>Programa:</b> $programa</span><br>";
             echo                              "<hr class='p-0 m-0  mt-2'>";
-
             echo                            "</td>";
             echo                "</tr>";
         }
-
         echo               "</table>";
         echo            "</div>";
         echo          "</div>";

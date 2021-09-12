@@ -46,11 +46,10 @@ if (empty($cc_estudiante) != 1) {
             echo                                "</div>";
 
             echo                                 "<span class='text-primary'>$nombre</span><br>";
-            echo                                 "<span class='text-muted'><b>Fecha de inicio: </b>$fechanaci <br></span>";
-            echo                                 "<span class='text-muted'><b>Correo: </b><$correo <br></span>";
-            echo                                 "<span class='text-muted'><b>Dirección: </b><$direccion <br></span>";
-            echo                                 "<span class='text-muted'><b>Sisben: </b><$sisben <br><span>";
-            echo                                     "&nbsp;&nbsp;&nbsp;&nbsp;";
+            echo                                 "<span class='text-muted'><b>Fecha de nacimiento: </b>$fechanaci <br></span>";
+            echo                                 "<span class='text-muted'><b>Correo: </b>$correo <br></span>";
+            echo                                 "<span class='text-muted'><b>Dirección: </b>$direccion <br></span>";
+            echo                                 "<span class='text-muted'><b>Sisben: </b>$sisben <br><span>";
             echo                                     "<span class='text-muted'><b>Genero: </b>$genero</span>";
             echo                                     "<br></span>";
             echo                                     "<span class='text-muted'><b>Población: </b> $poblacion<br></span>";

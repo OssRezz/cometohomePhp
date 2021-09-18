@@ -65,6 +65,26 @@ class Estudiantes extends Conexion
         return $buscarEstudiantes;
     }
 
+    public function tarjetaEstudiantes($cc_estudiante)
+    {
+        $tarjetaEstudiantes = null;
+        $statement = $this->db->prepare("SELECT P.nombre AS 'profesor',P.email AS 'correo',E.nombre AS 'estudiante',TC.grupo,TC.estado,TE.escuela as 'escuela',TP.nombre as 'programa',TS.nombre AS 'sede' FROM `tbl_matriculas` AS M
+        INNER JOIN tbl_profesores AS P ON P.cc_profesor=M.cc_profesor
+        INNER JOIN tbl_clases AS TC ON TC.id_clase=M.id_clase
+        INNER JOIN tbl_inscripciones AS TI ON TI.id_inscripcion=M.id_inscripcion
+        INNER JOIN tbl_estudiantes AS E ON E.cc_estudiante=TI.cc_estudiante
+        INNER JOIN tbl_programas AS TP ON TP.id_programa=TI.id_programa
+        INNER JOIN tbl_escuelas AS TE ON TE.id_escuela=TP.id_escuela
+        INNER JOIN tbl_sedes AS TS ON TS.id_sede=TP.id_sede              
+        WHERE TI.cc_estudiante = :cc_estudiante");
+        $statement->bindParam(':cc_estudiante', $cc_estudiante);
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $tarjetaEstudiantes[] = $consulta;
+        }
+        return $tarjetaEstudiantes;
+    }
+
     public function contadorEstudiantes()
     {
         $contadorEstudiantes = null;

@@ -2,6 +2,7 @@
 require '../../usuarios/Modelo/ModeloUsuarios.php';
 
 $usuario = new Usuarios();
+$usuario->sessionEstudiante();
 
 ?>
 
@@ -40,18 +41,18 @@ $usuario = new Usuarios();
         </div>
 
         <div class="row px-3 py-2 bgcc">
-                <!--perfil-->
-                <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">                    
-                    <div class="card-body p-0 d-flex justify-content-between">
-                        <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
-                        </div>
-                        <div class="col">
-                            <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
-                            <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
-                        </div>
+            <!--perfil-->
+            <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">
+                <div class="card-body p-0 d-flex justify-content-between">
+                    <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
+                        <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
                     </div>
-               </div>
+                    <div class="col">
+                        <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
+                        <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 

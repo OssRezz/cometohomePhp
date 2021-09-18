@@ -22,4 +22,15 @@ class Inscripcion extends Conexion
             return false;
         }
     }
+
+    public function contadorInscripciones()
+    {
+        $contadorInscripciones = null;
+        $statement = $this->db->prepare("SELECT Count(id_inscripcion) as 'id' FROM `tbl_inscripciones`");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $contadorInscripciones[] = $consulta;
+        }
+        return $contadorInscripciones;
+    }
 }

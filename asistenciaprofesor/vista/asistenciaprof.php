@@ -34,7 +34,7 @@ $usuario->sessionAdmin();
         <div class="row bgcc t pt-0 pl-md-2 pr-0 pb-3">
 
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
                 <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
             </div>
@@ -51,18 +51,18 @@ $usuario->sessionAdmin();
         </div>
 
         <div class="row px-3 py-2 bgcc">
-                <!--perfil-->
-                <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">                    
-                    <div class="card-body p-0 d-flex justify-content-between">
-                        <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
-                        </div>
-                        <div class="col">
-                            <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
-                            <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
-                        </div>
+            <!--perfil-->
+            <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">
+                <div class="card-body p-0 d-flex justify-content-between">
+                    <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
+                        <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
                     </div>
-               </div>
+                    <div class="col">
+                        <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
+                        <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -163,8 +163,10 @@ $usuario->sessionAdmin();
                                 </td>
 
                     </tr>
-            <?php }
-                        } ?>
+            <?php
+                            }
+                        }
+            ?>
                 </table>
                 <!-- Pagination -->
                 <div class="col d-flex justify-content-center" id="paginacion"></div>

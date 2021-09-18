@@ -1,5 +1,13 @@
 <?php
 require '../../usuarios/Modelo/ModeloUsuarios.php';
+require '../../estudiantes/Modelo/ModeloEstudiantes.php';
+require '../../matriculas/Modelo/ModeloMatriculas.php';
+require '../../programas/Modelo/ModeloProgramas.php';
+
+
+$programas = new Programas();
+$matricula = new Matriculas();
+$estudiante = new Estudiantes();
 $usuario = new Usuarios();
 $usuario->sessionAdmin();
 
@@ -39,74 +47,89 @@ $usuario->sessionAdmin();
         </div>
 
         <div class="row px-3 py-2 bgcc">
-                <!--perfil-->
-                <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">                    
-                    <div class="card-body p-0 d-flex justify-content-between">
-                        <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
-                        </div>
-                        <div class="col">
-                            <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
-                            <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
-                        </div>
+            <!--perfil-->
+            <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">
+                <div class="card-body p-0 d-flex justify-content-between">
+                    <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
+                        <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
+                    </div>
+                    <div class="col">
+                        <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
+                        <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
                     </div>
                 </div>
+            </div>
         </div>
 
 
 
         <!--Links-->
         <script src="../../roles/App/script.js"></script>
-        <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top'  id="navbar"></div>
+        <div class='row bg-dark mb-5 d-flex justify-content-center sticky-top' id="navbar"></div>
 
         <!--Artes audiovisuales-->
         <div class="row d-flex justify-content-center mt-5 py-3 " id="audiovisuales">
             <h5 class=" text-center py-2 px-5 rounded"><i class="fas fa-flag"></i> Reportes</h5>
         </div>
+
         <div class="row d-flex justify-content-center py-3">
             <div id="respuesta">
-            <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
+                <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
             </div>
 
             <div class="card mx-3 mb-3 card-image-width rounded-0">
-                <div class="card-body">
-                    <h5 class="card-title">Nombre de Curso</h5>
-                    <p>
-                        <b>Escuela:</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias, excepturi. <br>
-                        <b>fecha:</b> 19/05/2029
-                    </p>
+                <div class="card-body  align-items-center d-flex justify-content-center">
+                    <div class="display-4 ">
+                        <?php
+                        $totalProgramas = $programas->contadorProgramasActivos();
+                        if ($totalProgramas != null) {
+                            echo $totalProgramas[0]['id'];
+                        } else {
+                            echo "0";
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
-                    Reporte #1
+                    Programas activos
                 </div>
             </div>
+
             <div class="card mx-3 mb-3 card-image-width rounded-0">
-                <div class="card-body">
-                    <h5 class="card-title">Nombre de Curso</h5>
-                    <p>
-                        <b>Escuela:</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias, excepturi. <br>
-                        <b>fecha:</b> 19/05/2029
-                    </p>
+                <div class="card-body  align-items-center d-flex justify-content-center">
+                    <div class="display-4 ">
+                        <?php
+                        $totalEstudiantes = $estudiante->contadorEstudiantes();
+                        if ($totalEstudiantes != null) {
+                            echo $totalEstudiantes[0]['id'];
+                        } else {
+                            echo "0";
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
-                    Reporte #2
+                    Estudiantes registrados
                 </div>
             </div>
+
             <div class="card mx-3 mb-3 card-image-width rounded-0">
-                <div class="card-body">
-                    <h5 class="card-title">Nombre de Curso</h5>
-                    <p>
-                        <b>Escuela:</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias, excepturi. <br>
-                        <b>fecha:</b> 19/05/2029 <br>
-                    </p>
+                <div class="card-body  align-items-center d-flex justify-content-center">
+                    <div class="display-4 ">
+                        <?php
+                        $totalMatricula = $matricula->contadorMatricula();
+                        if ($totalMatricula != null) {
+                            echo $totalMatricula[0]['id'];
+                        } else {
+                            echo "0";
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
-                    Reporte #3
+                    Estudiantes matriculados
                 </div>
             </div>
-
-
-
 
         </div>
 

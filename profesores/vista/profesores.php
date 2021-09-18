@@ -32,7 +32,7 @@ $usuario->sessionAdmin();
         <div class="row bgcc t pt-0 pl-md-2 pr-0 pb-3">
 
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
                 <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
             </div>

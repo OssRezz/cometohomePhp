@@ -13,7 +13,12 @@ class Usuarios extends Conexion
     {
         if ($_SESSION['nombre'] != null) {
             if ($_SESSION['perfil'] != 1) {
-                header('Location: ../../estudiantes/vista/alumnos.php');
+
+                if ($_SESSION['perfil'] != 2) {
+                    header('Location: ../../estudiantes/vista/alumnoClase.php');
+                } else {
+                    header('Location: ../../estudiantes/vista/alumnos.php');
+                }
             }
         } else {
             header('Location: ../../index.html');
@@ -24,6 +29,18 @@ class Usuarios extends Conexion
     {
         if ($_SESSION['nombre'] != null) {
             if ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 2) {
+                header('Location: ../../index.html');
+            }
+        } else {
+            header('Location: ../../index.html');
+        }
+    }
+
+    public function sessionEstudiante()
+    {
+        if ($_SESSION['nombre'] != null) {
+
+            if ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 2 &&  $_SESSION['perfil'] != 3) {
                 header('Location: ../../index.html');
             }
         } else {
@@ -52,6 +69,10 @@ class Usuarios extends Conexion
     public function getCorreo()
     {
         return $_SESSION['correo'];
+    }
+    public function getIdentificacion()
+    {
+        return $_SESSION['identificacion'];
     }
 
 

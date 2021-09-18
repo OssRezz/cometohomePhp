@@ -32,6 +32,17 @@ class Programas extends Conexion
         return $contadorInscripciones;
     }
 
+    public function contadorProgramasActivos()
+    {
+        $contadorInscripciones = null;
+        $statement = $this->db->prepare("SELECT COUNT(id_programa) as 'id' FROM tbl_programas WHERE estado=1");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $contadorInscripciones[] = $consulta;
+        }
+        return $contadorInscripciones;
+    }
+
     public function listarEscuela()
     {
         $listarEscuela = null;
@@ -96,7 +107,7 @@ class Programas extends Conexion
         }
     }
 
-    public function actualizarPrograma($id_programa,$id_escuela, $nombre, $edad, $id_sede, $cupos, $costo, $fechainicio, $fechafin, $horario, $estado)
+    public function actualizarPrograma($id_programa, $id_escuela, $nombre, $edad, $id_sede, $cupos, $costo, $fechainicio, $fechafin, $horario, $estado)
     {
         $statement = $this->db->prepare("UPDATE `tbl_programas` SET `id_escuela`=:id_escuela,
         `nombre`=:nombre,`edad`=:edad,`id_sede`=:id_sede,`cupos`=:cupos,`costo`=:costo,`fechainicio`=:fechainicio,`fechafin`=:fechafin,`horario`=:horario,`estado`=:estado WHERE id_programa=:id_programa");

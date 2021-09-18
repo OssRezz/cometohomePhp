@@ -27,7 +27,11 @@ class Asisprofesor extends Conexion
     public function contadorAsisprofesor()
     {
         $contadorProfesores = null;
-        $statement = $this->db->prepare("SELECT Count(id_asisprofesor) as 'id' FROM tbl_asisprofesores");
+        $statement = $this->db->prepare("SELECT TC.grupo,TC.numeroclases,P.nombre,TAP.id_asisprofesor, TAP.cc_profesor,
+        TAP.id_clase,max(TAP.fecha) as 'fecha',SUM(TAP.asistencia) as 'asistencia' FROM `tbl_asisprofesores` as TAP
+        INNER JOIN tbl_clases AS TC ON TC.id_clase=TAP.id_clase
+        INNER JOIN tbl_profesores AS P ON P.cc_profesor=TAP.cc_profesor WHERE TC.estado = 1
+        GROUP BY TC.id_clase, P.cc_profesor");
         $statement->execute();
         while ($consulta = $statement->fetch()) {
             $contadorProfesores[] = $consulta;

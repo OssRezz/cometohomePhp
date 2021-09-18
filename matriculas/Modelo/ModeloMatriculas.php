@@ -102,4 +102,15 @@ class Matriculas extends Conexion
             return false;
         }
     }
+
+    public function contadorMatricula()
+    {
+        $contadorMatricula = null;
+        $statement = $this->db->prepare("SELECT COUNT(id_matricula) as 'id' FROM tbl_matriculas");
+        $statement->execute();
+        while ($consulta = $statement->fetch()) {
+            $contadorMatricula[] = $consulta;
+        }
+        return $contadorMatricula;
+    }
 }

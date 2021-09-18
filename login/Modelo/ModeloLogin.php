@@ -21,12 +21,14 @@ class Login extends Conexion
             $_SESSION['perfil'] = $consulta["id_perfil"];
             $_SESSION['id'] = $consulta["codigo"];
             $_SESSION['correo'] = $consulta["email"];
+            $_SESSION['identificacion'] = $consulta["identificacion"];
+
             return true;
         } else {
             return false;
         }
     }
-    
+
     /**
      * existeUsuario
      *

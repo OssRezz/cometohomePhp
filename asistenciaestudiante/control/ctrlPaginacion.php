@@ -11,7 +11,7 @@ $pagina = $_POST['pagina'];
 
 //La funcion contadorUsuarios nos da la cantidad total de usuarios 
 $Asisestudiante = $asisestudiante->contadorAsisestudiante();
-$totalContador = $Asisestudiante[0]['id'];
+$totalContador = count($Asisestudiante);
 
 
 //Vamos a tener como resultado siempre el valor entero. "1.3 = 2"

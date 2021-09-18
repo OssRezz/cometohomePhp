@@ -26,6 +26,15 @@ $(document).ready(function () {
         }
     });
 
+
+    //tarjetas de la vista alumno clase
+    const idenEstudiante = $('#idenEstudiante').val();
+    $.post('../control/ctrlCardsClaseEstudiante.php', {
+        idenEstudiante: idenEstudiante
+    }, function (responseText) {
+        $('#claseEstudiante').html(responseText);
+    });
+
     $("#btn-ingresar-estudiante").click(function (e) {
         const identificacion = $('#identificacion').val();
         const nombre = $('#nombre').val();
@@ -109,6 +118,7 @@ $(document).ready(function () {
         }
 
     });
+
 
 
 });

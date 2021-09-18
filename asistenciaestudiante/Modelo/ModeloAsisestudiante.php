@@ -27,7 +27,11 @@ class Asisestudiante extends Conexion
     public function contadorAsisestudiante()
     {
         $contadorAsisestudiante = null;
-        $statement = $this->db->prepare("SELECT Count(id_asisestudiante) as 'id' FROM tbl_asisestudiantes");
+        $statement = $this->db->prepare("SELECT TC.grupo,TC.numeroclases,E.nombre,TAE.id_asisestudiante, TAE.cc_estudiante,
+        TAE.id_clase,max(TAE.fecha) as 'fecha',SUM(TAE.asistencia) as 'asistencia' FROM tbl_asisestudiantes as TAE
+        INNER JOIN tbl_clases AS TC ON TC.id_clase=TAE.id_clase
+        INNER JOIN tbl_estudiantes AS E ON E.cc_estudiante=TAE.cc_estudiante WHERE TC.estado = 1
+        GROUP BY TAE.id_clase,E.cc_estudiante");
         $statement->execute();
         while ($consulta = $statement->fetch()) {
             $contadorAsisestudiante[] = $consulta;

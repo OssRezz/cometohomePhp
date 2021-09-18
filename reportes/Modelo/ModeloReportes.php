@@ -129,7 +129,7 @@ class Reportes extends Conexion
     {
         $reportePoblaciones = null;
         $statement = $this->db->prepare("SELECT  E.id_poblacion,TP.poblacion, count(E.id_poblacion) as 'cantPoblacion' FROM `tbl_estudiantes` AS E
-        INNER JOIN tbl_poblaciones AS Tp ON TP.id_poblacion=E.id_poblacion
+        INNER JOIN tbl_poblaciones AS TP ON TP.id_poblacion=E.id_poblacion
         GROUP BY E.id_poblacion 
         ORDER BY cantPoblacion DESC");
         $statement->execute();

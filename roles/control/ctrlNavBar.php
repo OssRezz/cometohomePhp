@@ -44,9 +44,14 @@ function profesorMenu()
 }
 
 
-function estudianteMenu()
+function estudianteMenu($perfil)
 {
-    echo  "                <a href='../../config/vista/config.php' class='border-0 btn btn-w btn-outline-light rounded-0' style='width: 50px;'><i class='fas fa-cog'></i></a>";
+    if ($perfil != 3) {
+        echo  "                <a href='../../config/vista/config.php' class='border-0 btn btn-w btn-outline-light rounded-0' style='width: 50px;'><i class='fas fa-cog'></i></a>";
+    } else {
+        echo  "                <a href='../../estudiantes/vista/alumnoClase.php' class='border-0 btn btn-w btn-outline-light rounded-0'>Estudiante</a>";
+        echo  "                <a href='../../config/vista/config.php' class='border-0 btn btn-w btn-outline-light rounded-0' style='width: 50px;'><i class='fas fa-cog'></i></a>";
+    }
 }
 
 
@@ -56,6 +61,6 @@ switch ($perfil) {
     case 2:
         profesorMenu();
     case 3:
-        estudianteMenu();
+        estudianteMenu($perfil);
         break;
 }

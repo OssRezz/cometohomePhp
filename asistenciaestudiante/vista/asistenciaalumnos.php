@@ -35,7 +35,7 @@ $usuario->sessionProfesor();
         <div class="row bgcc t pt-0 pl-md-2 pr-0 pb-3">
 
             <div id="respuesta">
-                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 10; ?>"></input>
+                <input type="hidden" id="limit" value="<?= $limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 4; ?>"></input>
                 <input type="hidden" id="pagina" value="<?= $pagina = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1; ?>"></input>
                 <input type="hidden" id="perfilUsuario" value="<?= $usuario->getPerfil() ?>"></input>
             </div>
@@ -52,18 +52,18 @@ $usuario->sessionProfesor();
         </div>
 
         <div class="row px-3 py-2 bgcc">
-                <!--perfil-->
-                <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">                    
-                    <div class="card-body p-0 d-flex justify-content-between">
-                        <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
-                        </div>
-                        <div class="col">
-                            <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
-                            <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
-                        </div>
+            <!--perfil-->
+            <div class="card border-0 rounded-pill bg-card-perfil" style="width: 23rem;">
+                <div class="card-body p-0 d-flex justify-content-between">
+                    <div class="col-1 ml-3 my-2 d-flex justify-content-center align-items-center">
+                        <i class="fas fa-user-circle fa-3x text-white" style="opacity: 0.7;"></i>
                     </div>
-               </div>
+                    <div class="col">
+                        <div class="m-0 mt-1" style="font-size: 16px;"> <?php echo $usuario->getUsuario() ?></div>
+                        <div class="m-0" style="font-size: 16px;"> <?php echo $usuario->getCorreo() ?></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -133,15 +133,7 @@ $usuario->sessionProfesor();
             </div>
 
             <div class="card rounded-0 border-0 mx-4" style="width: 26rem;">
-                <table class='table table-hover table-sm table-responsive border-0 table-light' style="cursor: pointer;">
-                    <!--tr class="table-active">
-                        <th>Cédula </th>
-                        <th>Estudiante</th>
-                        <th>Clase</th>
-                        <th>N° clases</th>
-                        <th>Asistencias</th>
-                        <th>Fecha</th>
-                    </tr-->
+                <table class='table table-hover table-sm border-0 table-light' style="cursor: pointer;">
 
                     <h5><i class="fas fa-list"></i> Lista de asistencia de Alumnos</h5>
                     <hr class="p-0 m-0">
@@ -155,14 +147,20 @@ $usuario->sessionProfesor();
                         if ($Asisestudiante != null) {
                             foreach ($Asisestudiante as $Asisestudiante) {
                         ?>
-                                <td><?php echo $Asisestudiante['cc_estudiante'] ?></td>
-                                <td><?php echo $Asisestudiante['nombre'] ?></td>
-                                <td><?php echo $Asisestudiante['grupo'] ?></td>
-                                <td><?php echo $Asisestudiante['numeroclases'] ?></td>
-                                <td><?php echo $Asisestudiante['asistencia'] ?></td>
-                                <td><?php echo $Asisestudiante['fecha'] ?></td>
+                                <td colspan="6">
 
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="text-muted"><b>Id:</b> <?php echo $Asisestudiante['cc_estudiante'] ?></div>
+                                        <div>
+                                            <span class="text-muted"><b>Fecha: </b><?php echo $Asisestudiante['fecha'] ?></span>
+                                        </div>
+                                    </div>
 
+                                    <span class="text-primary"><?php echo strtoupper($Asisestudiante['nombre']) ?></span><br>
+                                    <span class="text-muted"><b>Grupo: </b><?php echo $Asisestudiante['grupo'] ?><br></span>
+                                    <span class="text-muted"><b>Número de clases: </b><?php echo $Asisestudiante['numeroclases'] ?><br></span>
+                                    <b class="text-muted">Asistencias: </b><span class="text-muted"> <?php echo $Asisestudiante['asistencia'] ?><br></span>
+                                </td>
                     </tr>
                 <?php }
                         } else { ?>

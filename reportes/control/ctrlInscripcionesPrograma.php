@@ -81,7 +81,7 @@ if ($Reporte != null) {
         $count++;
     }
 } else {
-    $reporte->setCellValue('A' . $count + 1, "No hay registro en la base de datos");
+    $reporte->setCellValue('A4', "No hay registros en las fechas seleccionadas");
 }
 
 //autofilter

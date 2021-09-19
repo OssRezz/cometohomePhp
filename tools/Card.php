@@ -4,8 +4,17 @@ class Card
 {
     public function tarjeta($id_programa, $programa, $escuela, $sede, $fecha, $edad, $horario)
     {
-        echo  "<div class='card mx-3 mb-3 card-image-width shadow-sm'>";
-        echo "<img src='https://picsum.photos/200/80' class='card-img-top' alt='...'>";
+        echo "<div class='card mx-3 mb-3 card-image-width shadow-sm'>";
+
+        echo "<div class='input-group d-flex justify-content-around mt-3' role='group' aria-label='Basic example'>";
+        if ($escuela === "Música") {
+            echo "<i class='fab fa-itunes-note fa-5x'></i>";
+        } else if ($escuela === "Artes plásticas") {
+            echo "<i class='fas fa-palette fa-5x'></i>";
+        } else if ($escuela === "Artes escénicas") {
+            echo "<i class='fas fa-theater-masks fa-5x'></i>";
+        }
+        echo "</div>";
         echo "<div class='card-body'>";
         echo "<h5 class='card-title text-primary' style='font-size:19px;'>" . $programa . "</h5>";
         echo "<p>";

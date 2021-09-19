@@ -65,7 +65,7 @@ $usuario->sessionEstudiante();
         <!---->
         <div class="row d-flex justify-content-center align-items-start pt-3">
 
-            <div class="card mr-md-4 mb-4 rounded-0" style="width: 23rem;">
+            <div class="card mr-md-4 mb-4 rounded-0" style="width: 23rem; height:19rem;">
                 <div class="card-body">
                     <h5 class="mb-3"><i class="fas fa-at"></i> Cambiar correo electrónico </h5>
 
@@ -84,7 +84,7 @@ $usuario->sessionEstudiante();
                 </div>
             </div>
 
-            <div class="card mb-4  rounded-0" style="width: 23rem;">
+            <div class="card mb-4  rounded-0" style="width: 23rem; height:19rem;">
                 <div class="card-body">
                     <h5 class="mb-3"><i class="fas fa-key"></i> Cambiar contraseña</h5>
 
@@ -118,27 +118,26 @@ $usuario->sessionEstudiante();
 
 
 
-        </div>
-        <?php
-        if ($usuario->getPerfil() === "1") {
-        ?>
-            <div class="row d-flex justify-content-center ">
 
-                <div class="card mr-md-4 mb-4 rounded-0" style="width: 23rem;">
+            <?php
+            if ($usuario->getPerfil() === "1") {
+            ?>
+
+                <div class="card mr-md-4 mb-4 rounded-0 ml-md-4" style="width: 23rem; height:19rem;">
                     <div class="card-body ">
-                        <h5 class="mb-3"><i class="fas fa-database"></i> Backup </h5>
+                        <h5 class="mb-4"><i class="fas fa-database"></i> Backup </h5>
 
                         <div class="card-text mb-4">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque adipisci ut hic delectus exercitationem nobis asperiores corporis necessitatibus, perspiciatis vel fuga, iusto ullam earum officia ex officiis, repellat natus et?
+                            El backup guardará toda la Información almacenada en la base de datos.<br><br>
+                            El archivo sql se guarda en la raiz del proyecto. En la carpeta llamada BackUp.<br><br>
                         </div>
                         <a href="../control/ctrlBackUp.php" class="btn btn-outline-dark btn-block  rounded-0" id="btn-backup" target="_blank">Realizar Backup</a>
                     </div>
                 </div>
-
-            </div>
-        <?php
-        }
-        ?>
+            <?php
+            }
+            ?>
+        </div>
 
     </div>
 

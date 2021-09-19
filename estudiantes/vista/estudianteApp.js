@@ -36,6 +36,10 @@ $(document).ready(function () {
     });
 
     $("#btn-ingresar-estudiante").click(function (e) {
+        $(this).hide();
+        const spinner = document.querySelector('#spinner');
+        spinner.style.display = 'flex';
+
         const identificacion = $('#identificacion').val();
         const nombre = $('#nombre').val();
         const apellido = $('#apellido').val();
@@ -63,6 +67,8 @@ $(document).ready(function () {
             passwordVerify: passwordVerify
         }, function (responseText) {
             $('#respuesta').html(responseText);
+            $("#btn-ingresar-estudiante").show();
+            spinner.style.display = 'none';
         });
     });
 

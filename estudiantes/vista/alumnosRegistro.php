@@ -147,6 +147,16 @@ $date = date('Y-m-d');
                     <div class="form-group">
                         <button type="button" id="btn-ingresar-estudiante" class="btn btn-outline-success btn-block rounded-0">Registrarse</button>
                     </div>
+                    <div id="spinner">
+                        <div class="sk-chase">
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                        </div>
+                    </div>
                     <div id="respuesta"></div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ if ($id_clase != null) {
         $contenidoModal .= " </div> ";
         $contenidoModal .= "</div>";
 
-        $modal->modalForm("Actualizar sede", $contenidoModal);
+        $modal->modalForm("Actualizar clase", $contenidoModal);
     } else {
         $modal->modalInformativa("error", "Algo salió mal en la base de datos");
     }

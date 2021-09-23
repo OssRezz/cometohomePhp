@@ -116,7 +116,7 @@ $usuario->sessionAdmin();
 
                     <div class="form-row">
                         <div class="col">
-                            <button id="btn-ingresar-clase" type="button" class="btn btn-outline-success btn-block rounded-0">Registrar usuario</button>
+                            <button id="btn-ingresar-clase" type="button" class="btn btn-outline-success btn-block rounded-0">Registrar clase</button>
                         </div>
                     </div>
                 </div>

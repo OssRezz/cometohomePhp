@@ -24,7 +24,7 @@ if ($id_usuario != null) {
         $contenidoModal .= "        <button type='button' id='btn-cancelar' class='btn btn-outline-primary btn-block rounded-0' >Cancelar</button>";
         $contenidoModal .= "    </div> ";
         $contenidoModal .= "    <div class='col-5'>";
-        $contenidoModal .= "        <button type='button' id='btn-eliminar-usuario' value='$id_usuario' class='btn btn-outline-danger  btn-block rounded-0' >Eliminar Sede</button>";
+        $contenidoModal .= "        <button type='button' id='btn-eliminar-usuario' value='$id_usuario' class='btn btn-outline-danger  btn-block rounded-0' >Eliminar usuario</button>";
         $contenidoModal .= "    </div> ";
         $contenidoModal .= "</div>";
         $contenidoModal .= "<script>$('#btn-cancelar').click(function(){location.reload()});</script>";

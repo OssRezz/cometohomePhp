@@ -28,8 +28,8 @@ function sendMail($correo, $nombre)
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'ComeToHome - Casa de la Cultura De Guarne';
-        $mail->Body    = '<h2 style="color: blue;">Informacion</h2><br><p>Se ha cambiando la contraseña  de su cuenta. Si no lo has modificado tú, deberías comprobar qué ha sucedido..</p>';
-        $mail->AltBody = 'Informacion: Se ha cambiando la contraseña  de su cuenta. Si no lo has modificado tú, deberías comprobar qué ha sucedido..';
+        $mail->Body    = '<h2 style="color: blue;">Informacion</h2><br><p>Se ha cambiando la contraseña  de su cuenta. Si no lo has modificado tú, comunicate con la casa de la cultura...</p>';
+        $mail->AltBody = 'Informacion: Se ha cambiando la contraseña  de su cuenta. Si no lo has modificado tú, comunicate con la casa de la cultura...';
         $mail->send();
         return true;
     } catch (Exception $e) {

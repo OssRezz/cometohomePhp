@@ -63,11 +63,11 @@ if ($id_inscripcion != null) {
         $contenidoModal .= "</div>";
         $contenidoModal .= "<div class='form-group'> ";
         $contenidoModal .= "  <div class='col'>";
-        $contenidoModal .= "    <button type='button' id='btn-insertar-matricula' class='btn btn-outline-success btn-block rounded-0' >Matriculas estudiante</button>";
+        $contenidoModal .= "    <button type='button' id='btn-insertar-matricula' class='btn btn-outline-success btn-block rounded-0' >Matricular estudiante</button>";
         $contenidoModal .= " </div> ";
         $contenidoModal .= "</div>";
 
-        $modal->modalForm("Ingresar matricula", $contenidoModal);
+        $modal->modalForm("Formulario de matricula", $contenidoModal);
     } else {
         $modal->modalInformativa("Informacion", "Algo asdas mal");
     }

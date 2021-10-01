@@ -17,8 +17,8 @@ function sendMail($correo, $nombre)
         $mail->isSMTP();                                            // Set mailer to use SMTP
         $mail->Host       = 'smtp.gmail.com';                 // Specify main and backup SMTP servers
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'cometohomecultura@gmail.com';
-        $mail->Password   = '3366CGpeople';
+        $mail->Username   = '';
+        $mail->Password   = '';
         $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
         $mail->Port       = 465;
         //Recipients
